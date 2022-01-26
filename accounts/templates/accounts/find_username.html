@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load django_bootstrap5 %}
+
+{% block content %}
+<div class="container">
+    <div class="row"></div>
+    <div class="col-md-4 offset-md-4">
+        <div class="login-form bg-light mt-4 p-4">
+            <form>
+                <h4>아이디 찾기</h4>
+                <hr class="t-my-3">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+                <button class="btn btn-outline-primary" type="submit">아이디 찾기</button>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

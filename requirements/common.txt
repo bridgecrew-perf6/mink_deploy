@@ -1,0 +1,10 @@
+Django
+pillow
+mysqlclient
+gunicorn
+django-debug-toolbar
+django-bootstrap5
+django-summernote
+lazy-string
+requests
+django-dotenv
