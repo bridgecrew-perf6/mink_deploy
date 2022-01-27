@@ -84,7 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mink',
-        'USER': 'kmglocal',
+        'USER': 'root',
         'PASSWORD': 'sbs123414',
         'HOST': '172.17.0.1',
         'PORT': '3306',
@@ -143,7 +143,7 @@ AUTH_USER_MODEL = 'accounts.User'
 STATICFILES_DIRS = [
     BASE_DIR / 'base/static',
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = 'accounts:login'

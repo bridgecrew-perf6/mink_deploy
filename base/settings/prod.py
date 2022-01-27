@@ -5,9 +5,9 @@ DEBUG = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'site7',
-        'USER': 'kmglocal',
-        'PASSWORD': '1234',
+        'NAME': 'mink',
+        'USER': 'root',
+        'PASSWORD': 'sbs123414',
         'HOST': '172.17.0.1',
         'PORT': '3306',
         'OPTIONS': {
