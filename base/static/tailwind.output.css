@@ -571,6 +571,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.75rem;
 }
 
+.t-h-fit {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -589,6 +595,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-full {
   width: 100%;
+}
+
+.t-w-96 {
+  width: 24rem;
+}
+
+.t-w-80 {
+  width: 20rem;
 }
 
 .t-max-w-screen-lg {
@@ -745,6 +759,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-text-blue-600\/50 {
   color: rgb(37 99 235 / 0.5);
+}
+
+.t-no-underline {
+  -webkit-text-decoration-line: none;
+          text-decoration-line: none;
 }
 
 @font-face {
