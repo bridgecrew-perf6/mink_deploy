@@ -599,6 +599,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100%;
 }
 
+.t-h-max {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -834,6 +840,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-pt-1 {
   padding-top: 0.25rem;
+}
+
+.t-pt-3 {
+  padding-top: 0.75rem;
 }
 
 .t-text-left {
