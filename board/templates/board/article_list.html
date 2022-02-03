@@ -7,11 +7,20 @@
         <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
             <div><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
             <div class="input-group t-pb-6 t-grid">
+                {% if board.id != 1 %}
                 {% if request.user.is_authenticated %}
                 <div class="t-g-col-4 t-mt-3 t-mb-3 t-flex t-justify-end">
                     <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
                         작성</a>
                 </div>
+                {%endif%}
+                {%else%}
+                {%if user.is_superuser == 1%}
+                <div class="t-g-col-4 t-mt-3 t-mb-3 t-flex t-justify-end">
+                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                        작성</a>
+                </div>
+                {%endif%}
                 {%endif%}
                 <div class="form-outline t-g-col-4 t-my-5">
                     <form class="t-flex">

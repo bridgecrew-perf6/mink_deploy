@@ -65,23 +65,25 @@ def article_detail(request: HttpRequest, board_id, article_id):
 
 @login_required
 def article_write(request: HttpRequest, board_id):
+    if board_id == 1 and request.user.is_superuser != 1:
+        return HttpResponse("잘못된 접근입니다.")
+
     if request.user.is_authenticated:
         board = Board.objects.get(id=board_id)
         returnUrl = f"/board/{board.id}"
         if request.method == 'POST':
-            form = ArticleForm(request.POST, board_id)
+            form = ArticleForm(request.POST)
             if form.is_valid():
                 article = form.save(commit=False)
                 article.board_id = board.id
                 article.user_id = request.user.id
                 article.writer = request.user.username
-
                 article.save()
                 return redirect(returnUrl)
         else:
             form = ArticleForm()
         context = {'form': form,
-                   'board': board}
+                  }
         return render(request, 'board/article_form.html', context)
     else:
         return redirect('accounts:login')
@@ -118,10 +120,8 @@ def article_delete(request: HttpRequest, article_id):
 
 @login_required
 def comment_write(request: HttpRequest, board_id, article_id):
-    board = get_object_or_404(Board, id=board_id)
-    article = get_object_or_404(Article, id=article_id)
-
     if request.user.is_authenticated:
+        article = get_object_or_404(Article, id=article_id)
         returnUrl = f"/board/{article.board_id}/article/{article.id}/"
         if request.method == 'POST':
             form = CommentForm(request.POST)

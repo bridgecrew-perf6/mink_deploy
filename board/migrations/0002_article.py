@@ -56,6 +56,7 @@ class Migration(migrations.Migration):
                 ('update_date', models.DateTimeField(auto_now=True, verbose_name='수정날짜')),
                 ('subject', models.CharField(max_length=100, verbose_name='제목')),
                 ('content', models.TextField(verbose_name='내용')),
+                ('tag', models.CharField(max_length=100, verbose_name='태그')),
                 ('is_blind', models.BooleanField(default=False, verbose_name='공개 여부')),
                 ('board', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='board.board')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),

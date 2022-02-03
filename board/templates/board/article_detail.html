@@ -2,11 +2,13 @@
 
 {%block content%}
 <div class="t-bg-slate-100">
-    <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg" style="margin:0 auto;">
-        <div><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
+    <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto" >
+        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
         <div class="card">
             <div class="card-header">
-                {{article.subject}}
+                <div class="t-cursor-pointer t-w-fit" onclick="location.href='{% url 'board:detail' board.id article.id%}'">
+                    <span>{{article.subject}}</span>
+                </div>
             </div>
             <div class="card-body t-min-h-screen t-flex-wrap">
                 <p class="card-text t-text-left">{{article.content|safe}}</p>
@@ -70,7 +72,7 @@
                     <label for="content"></label>
                     <textarea class="form-control" name="content"
                               id="content" rows="4"
-                              placeholder="내용을 입력하세요.">{{ form.content.value|default_if_none:'' }}</textarea>
+                              placeholder="내용을 입력하세요." required>{{ form.content.value|default_if_none:'' }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-outline-primary t-my-10">등록
                 </button>

@@ -19,6 +19,7 @@ class Article(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     subject = models.CharField('제목', max_length=100)
     content = models.TextField('내용')
+    tag = models.CharField('태그', max_length=100)
     is_blind = models.BooleanField('공개 여부', default=False)
     voter = models.ManyToManyField(User, related_name='voter_article')
     writer = models.CharField('글쓴이', max_length=100)

@@ -492,6 +492,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.25rem;
 }
 
+.t-my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .t-mt-4 {
   margin-top: 1rem;
 }
