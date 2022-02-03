@@ -45,14 +45,9 @@
             <div class="collapse navbar-collapse" id="navbarMobileToggle">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active t-w-fit" aria-current="page" href="{% url 'board:category' 4%}">동물 게시판</a>
+                        <a class="nav-link active t-w-fit" aria-current="page" href="{% url 'board:category' 2%}">밍크마당</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active t-w-fit" aria-current="page" href="{% url 'board:category' 3%}">유머 게시판</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active t-w-fit" aria-current="page" href="{% url 'board:category' 2%}">자유 게시판</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link active t-w-fit" aria-current="page" href="{% url 'board:category' 1%}">공지사항</a>
                     </li>
@@ -85,8 +80,10 @@
         </div>
     </nav>
 </header>
-{%block content%}
-{%endblock%}
+<section class="t-flex-1 t-flex t-flex-col">
+    {%block content%}
+    {%endblock%}
+</section>
 <footer class="footer py-3 t-bg-slate-100 ">
     <div class="container t-text-center">
         <span class="text-muted"><i class="fas fa-paw"></i> 밍크</span>

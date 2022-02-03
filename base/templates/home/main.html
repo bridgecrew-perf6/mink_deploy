@@ -5,57 +5,23 @@
     <div class="t-bg-slate-100 t-min-h-screen">
         <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-min-h-screen t-m-auto">
             <div class="t-grid t-grid-cols-1 sm:t-grid-cols-2 lg:t-grid-cols-2">
-                <!-- 동물게시판 시작 -->
-                {% if animal_index %}
-                <div class="t-mr-3 t-mt-5">
-                    <a href="{% url 'board:category' 3 %}"
-                       class="t-text-teal-400 fs-2 t-w-max t-pb-1">동물 게시판</a>
-                    <div class="t-mt-3 t-border-t t-border-slate-400 t-flex t-flex-col">
-                        {% for animal in animal_index %}
-                        <div class=" t-border-b t-border-slate-400  t-cursor-pointer t-py-1 t-overflow-hidden"
-                             onclick="location.href='{% url 'board:detail' animal.board_id animal.id%}'">
-                            <span class="  ">{{ animal.subject}}</span>
-                            <span class="t-text-xs t-text-blue-600/75">{{ animal.comment.count}}</span>
-                        </div>
-                        {%endfor%}
-                    </div>
-                </div>
-                {%endif%}
-                <!-- 동물게시판 끝 -->
-                <!-- 유머게시판 시작 -->
-                {% if humor_index %}
-                <div class="t-mr-3 t-mt-5">
-                    <a href="{% url 'board:category' 3 %}"
-                       class="t-text-teal-400 fs-2 t-w-max t-pb-1">유머 게시판</a>
-                    <div class="t-mt-3 t-border-t t-border-slate-400 t-flex t-flex-col">
-                        {% for humor in humor_index %}
-                        <div class=" t-border-b t-border-slate-400  t-cursor-pointer t-py-1 t-overflow-hidden"
-                             onclick="location.href='{% url 'board:detail' humor.board_id humor.id%}'">
-                            <span class="  ">{{ humor.subject}}</span>
-                            <span class="t-text-xs t-text-blue-600/75">{{ humor.comment.count}}</span>
-                        </div>
-                        {%endfor%}
-                    </div>
-                </div>
-                {%endif%}
-                <!-- 유머게시판 끝 -->
-                <!-- 자유게시판 시작 -->
-                {% if free_index %}
-                <div class=" t-mr-3 t-mt-5">
+                <!-- 밍크마당 시작 -->
+                {% if mink_index %}
+                <div class=" t-mt-5 t-mr-3 t-pb-5">
                     <a href="{% url 'board:category' 2 %}"
-                       class="t-text-teal-400 fs-2 t-w-max t-pb-1">자유 게시판</a>
+                       class="t-text-teal-400 fs-2 t-w-max t-pb-1">밍크마당</a>
                     <div class="t-mt-3 t-border-t t-border-slate-400">
-                        {% for free in free_index %}
+                        {% for mink in mink_index %}
                         <div class=" t-border-b t-border-slate-400 t-w-full t-cursor-pointer t-py-1"
-                             onclick="location.href='{% url 'board:detail' free.board_id free.id%}'">
-                            <span class="  ">{{ free.subject}}</span>
-                            <span class="t-text-xs t-text-blue-600/75">{{ free.comment.count}}</span>
+                             onclick="location.href='{% url 'board:detail' mink.board_id mink.id%}'">
+                            <span class="  ">{{ mink.subject}}</span>
+                            <span class="t-text-xs t-text-blue-600/75">{{ mink.comment.count}}</span>
                         </div>
                         {%endfor%}
                     </div>
                 </div>
                 {%endif%}
-                <!-- 자유게시판 끝 -->
+                <!-- 밍크마당 끝 -->
                 <!-- 공지사항 시작 -->
                 {% if notice_index %}
                 <div class=" t-mt-5 t-mr-3 t-pb-5">
@@ -73,6 +39,8 @@
                 </div>
                 {%endif%}
                 <!-- 공지사항 끝 -->
+
+
             </div>
         </div>
     </div>

@@ -132,12 +132,7 @@ def comment_write(request: HttpRequest, board_id, article_id):
                 comment.save()
                 return redirect(returnUrl)
         else:
-            form = CommentForm()
-        context = {'form': form,
-                   'board': board,
-                   'article': article,
-                   }
-        return render(request, 'board/article_detail.html', context)
+            return redirect(returnUrl)
     else:
         return redirect('accounts:login')
 

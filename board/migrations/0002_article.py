@@ -23,38 +23,8 @@ def gen_data(app, schema_editor):
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     # 공지사항 테스트 데이터 끝
 
-    # 자유게시판 테스트 데이터
-    board = Board(name="자유게시판")
-    board.save()
-    for id in range(1, 20):
-        subject = f"자유게시판 입니다.{id}"
-        content = f"좋은 아침입니다.{id}"
-        user = User.objects.get(id=1)
-        Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    for id in range(1, 20):
-        subject = f"다들 점심은 드셨나요?{id}"
-        content = f"맛있게 먹었습니다..{id}"
-        user = User.objects.get(id=2)
-        Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    # 자유게시판 테스트 데이터 끝
-
-    # 유머게시판 테스트 데이터
-    board = Board(name="유머게시판")
-    board.save()
-    for id in range(1, 20):
-        subject = f"깔깔깔{id}"
-        content = f"좋은 아침입니다.{id}"
-        user = User.objects.get(id=1)
-        Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    for id in range(1, 20):
-        subject = f"유머게시판 입니다.{id}"
-        content = f"맛있게 먹었습니다..{id}"
-        user = User.objects.get(id=2)
-        Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    # 유머게시판 테스트 데이터 끝
-
     # 동물게시판 테스트 데이터
-    board = Board(name="동물게시판")
+    board = Board(name="밍크마당")
     board.save()
     for id in range(1, 20):
         subject = f"고양이 보고가세요{id}"
@@ -63,7 +33,7 @@ def gen_data(app, schema_editor):
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     for id in range(1, 20):
         subject = f"강아지 보고가세요{id}"
-        content = f"맛있게 먹었습니다..{id}"
+        content = f"정말 귀엽죠?{id}"
         user = User.objects.get(id=1)
 
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
