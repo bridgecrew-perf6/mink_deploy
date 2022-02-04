@@ -24,33 +24,33 @@
     <script defer src="{% static 'common.js' %}"></script>
 
 </head>
-<body>
+<body class="t-flex t-flex-col t-min-h-screen t-pt-[56px]">
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }} t-my-[0px]">
-    {{ message }}
+    {{ message|safe }}
 </div>
 {% endfor %}
 {% endif %}
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark t-fixed top-0 t-w-full t-z-50">
+    <nav class="navbar navbar-expand-lg fixed-top t-bg-slate-600">
         <div class="container">
             <!-- Site Logo Here -->
-            <a class="navbar-brand" href="{%url 'index' %}"><i class="fas fa-paw"></i> 밍크</a>
+            <a class="navbar-brand t-text-yellow-700 hover:t-text-yellow-800" href="{%url 'index' %}"><i class="fas fa-paw"></i> 밍크</a>
             <!-- Mobile Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileToggle"
                     aria-controls="navbarMobileToggle" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarMobileToggle">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link active t-w-fit" aria-current="page"
+                        <a class="nav-link t-w-fit text-decoration-none text-light" aria-current="page"
                            href="{% url 'board:category' 2%}">밍크마당</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active t-w-fit" aria-current="page"
+                        <a class="nav-link t-w-fit text-decoration-none text-light" aria-current="page"
                            href="{% url 'board:category' 1%}">공지사항</a>
                     </li>
                 </ul>
@@ -59,8 +59,8 @@
 
                 {% if user.is_authenticated %}
                 <div class="btn-group float-end">
-                    <div class="t-text-white t-mr-5">
-                        <a href="{% url 'board:write' 2 %}">글 작성</a>
+                    <div class="t-mr-5">
+                        <a class="text-decoration-none text-light" href="{% url 'board:write' 2 %}">글 작성</a>
                     </div>
                     <a href="#"
                        class="dropdown-toggle text-decoration-none text-light" data-bs-toggle="dropdown">
@@ -83,7 +83,7 @@
         </div>
     </nav>
 </header>
-<section class="t-flex-1 t-flex t-flex-col t-mt-14">
+<section class="t-flex-1 t-flex t-flex-col">
     {%block content%}
     {%endblock%}
 </section>

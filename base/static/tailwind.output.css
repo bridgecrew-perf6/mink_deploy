@@ -560,6 +560,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 3.5rem;
 }
 
+.t-block {
+  display: block;
+}
+
 .t-flex {
   display: flex;
 }
@@ -704,6 +708,21 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
+.t-bg-slate-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
+}
+
 .t-bg-local {
   background-attachment: local;
 }
@@ -752,6 +771,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-pb-6 {
   padding-bottom: 1.5rem;
+}
+
+.t-pt-\[56px\] {
+  padding-top: 56px;
 }
 
 .t-text-left {
@@ -821,6 +844,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.t-text-yellow-700 {
+  --tw-text-opacity: 1;
+  color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
 @font-face {
   font-family: 'GmarketSansMedium';
 
@@ -841,6 +869,35 @@ html > body li {
 html > body {
   font-family: "GmarketSansMedium";
   text-underline-position: under;
+}
+
+.hover\:t-text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-yellow-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-yellow-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-yellow-600:hover {
+  --tw-text-opacity: 1;
+  color: rgb(202 138 4 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-yellow-800:hover {
+  --tw-text-opacity: 1;
+  color: rgb(133 77 14 / var(--tw-text-opacity));
+}
+
+.hover\:t-opacity-75:hover {
+  opacity: 0.75;
 }
 
 @media (min-width: 640px) {
