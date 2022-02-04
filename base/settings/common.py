@@ -159,3 +159,5 @@ SUMMERNOTE_CONFIG = {
         'height': '700',
     }
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://mink.ming99.site']

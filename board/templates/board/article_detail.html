@@ -2,11 +2,12 @@
 
 {%block content%}
 <div class="t-bg-slate-100">
-    <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto" >
+    <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
         <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
         <div class="card">
             <div class="card-header">
-                <div class="t-cursor-pointer t-w-fit" onclick="location.href='{% url 'board:detail' board.id article.id%}'">
+                <div class="t-cursor-pointer t-w-fit"
+                     onclick="location.href='{% url 'board:detail' board.id article.id%}'">
                     <span>{{article.subject}}</span>
                 </div>
             </div>
@@ -83,22 +84,23 @@
     <!-- 리스트 -->
     <section class="section-article-list">
         <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
-            <div><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
+            <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
             {% if request.user.is_authenticated %}
-            <div class="t-g-col-4 t-mt-3 t-mb-3 t-flex t-justify-end">
+            <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
                 <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
                     작성</a>
             </div>
             {%endif%}
             {% if article_list %}
-            <div class="t-border-b t-border-slate-400">
+            <div class="t-border-t t-border-slate-400">
                 {% for article in article_list %}
-                <div class="t-border-t t-border-slate-400 t-py-1 t-cursor-pointer"
-                     onclick="location.href='{% url 'board:detail' board.id article.id%}'">
+                <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
+                   href="{% url 'board:detail' board.id article.id%}">
                     <span class="t-w-screen t-break-all	">{{article.subject}}</span>
                     <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
                     <div class="t-flex t-pt-1">
-                        <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i class="far fa-thumbs-up"></i> {{article.voter.count}}</span>
+                        <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i
+                                class="far fa-thumbs-up"></i> {{article.voter.count}}</span>
                         {% if article.created_string == False %}
                         <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
                             <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</td></span>
@@ -108,7 +110,7 @@
                         {% endif %}
                         <span class="t-text-xs t-w-full t-text-right">{{article.writer}}</span>
                     </div>
-                </div>
+                </a>
                 {%endfor%}
             </div>
             <ul class="pagination justify-content-center t-mt-5 t-pb-5">
@@ -177,6 +179,7 @@
             },
         });
     })
+
 
 
 

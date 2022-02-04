@@ -32,7 +32,7 @@
                     </form>
                 </div>
                 {% if article_list %}
-                <div class="t-border-b t-border-slate-400 t-mt-5">
+                <div class="t-border-t t-border-slate-400 t-mt-5">
                     {% for article in article_list %}
                     <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
                        href="{% url 'board:detail' board.id article.id%}">

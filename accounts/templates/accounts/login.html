@@ -33,7 +33,7 @@
                             href="{% url 'accounts:signup'%}" class="t-text-cyan-600 float-end">회원가입</a>
                     </p>
                     <button class="t-bg-yellow-400 btn btn-outline t-mt-3"
-                            onclick="location.href='{% url 'accounts:kakao_login' %}';">
+                            onclick="location.href='{% url 'accounts:kakao_login' %}?next={{request.GET.next}}'">
                         카카오 로그인 <i
                             class="far fa-comment"></i></a>
                     </button>
