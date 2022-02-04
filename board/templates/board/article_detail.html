@@ -23,6 +23,7 @@
                     <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
                 </button>
             </div>
+            <div class="t-ml-2 t-mb-2">{{article.tag}}</div>
             <div class="card-footer text-muted">
                 {{article.reg_date}}
                 {% if request.user.id == article.user.id %}

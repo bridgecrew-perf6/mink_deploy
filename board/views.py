@@ -28,7 +28,7 @@ def article_list(request: HttpRequest, board_id):
 
     else:
         article_list = Article.objects.filter(board=board.id, ).filter(
-            Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
+            Q(tag__icontains=kw) | Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
 
     paginator = Paginator(article_list, 20)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
@@ -51,7 +51,7 @@ def article_detail(request: HttpRequest, board_id, article_id):
 
     else:
         article_list = Article.objects.filter(board=board.id, ).filter(
-            Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
+            Q(tag__icontains=kw) | Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
 
     paginator = Paginator(article_list, 20)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
@@ -83,7 +83,7 @@ def article_write(request: HttpRequest, board_id):
         else:
             form = ArticleForm()
         context = {'form': form,
-                  }
+                   }
         return render(request, 'board/article_form.html', context)
     else:
         return redirect('accounts:login')

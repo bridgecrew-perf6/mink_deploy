@@ -1,15 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
-
 <div class="t-bg-slate-100">
-    <div class="container t-h-screen">
+    <div class="container">
         <h1 class="t-pt-3 fs-1">게시글 등록</h1>
         <form method="post" class="post-form my-3">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-outline-primary t-mt-3">저장하기</button>
+            <div>
+                <button type="submit" class="btn btn-outline-primary">저장하기</button>
+            </div>
         </form>
     </div>
 </div>
-
 {% endblock %}
