@@ -5,7 +5,7 @@
 <section class="section-article-list">
     <div class="t-bg-slate-100">
         <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
-            <div><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
+            <div><a href="/board/{{board.id}}/" class="fs-1 hover:t-text-black">{{board.name}}</a></div>
             <div class="input-group t-pb-6 t-grid">
                 {% if board.id != 1 %}
                 {% if request.user.is_authenticated %}
@@ -34,8 +34,8 @@
                 {% if article_list %}
                 <div class="t-border-b t-border-slate-400 t-mt-5">
                     {% for article in article_list %}
-                    <div class="t-border-t t-border-slate-400 t-py-1 t-cursor-pointer"
-                         onclick="location.href='{% url 'board:detail' board.id article.id%}'">
+                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
+                       href="{% url 'board:detail' board.id article.id%}">
                         <span class="t-w-screen t-break-all">{{article.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
                         <div class="t-flex t-pt-1">
@@ -50,7 +50,7 @@
                             {% endif %}
                             <span class="t-text-xs t-w-full t-text-right">{{article.writer}}</span>
                         </div>
-                    </div>
+                    </a>
                     {%endfor%}
                 </div>
                 <ul class="pagination justify-content-center t-mt-5 t-pb-5">

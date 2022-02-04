@@ -564,6 +564,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   display: block;
 }
 
+.t-inline {
+  display: inline;
+}
+
 .t-flex {
   display: flex;
 }
@@ -849,6 +853,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   color: rgb(161 98 7 / var(--tw-text-opacity));
 }
 
+.t-text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 @font-face {
   font-family: 'GmarketSansMedium';
 
@@ -869,6 +878,44 @@ html > body li {
 html > body {
   font-family: "GmarketSansMedium";
   text-underline-position: under;
+}
+
+.visited\:t-text-purple-600:visited {
+  --tw-text-opacity: 1;
+  color: rgb(147 51 234 / var(--tw-text-opacity));
+}
+
+.visited\:t-text-green-600:visited {
+  --tw-text-opacity: 1;
+  color: rgb(22 163 74 / var(--tw-text-opacity));
+}
+
+.visited\:t-text-inherit:visited {
+  color: inherit;
+}
+
+.visited\:t-text-current:visited {
+  color: currentColor;
+}
+
+.visited\:t-text-slate-500:visited {
+  --tw-text-opacity: 1;
+  color: rgb(100 116 139 / var(--tw-text-opacity));
+}
+
+.visited\:t-text-slate-200:visited {
+  --tw-text-opacity: 1;
+  color: rgb(226 232 240 / var(--tw-text-opacity));
+}
+
+.visited\:t-text-slate-300:visited {
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity));
+}
+
+.visited\:t-text-slate-400:visited {
+  --tw-text-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-text-opacity));
 }
 
 .hover\:t-text-white:hover {
@@ -894,6 +941,16 @@ html > body {
 .hover\:t-text-yellow-800:hover {
   --tw-text-opacity: 1;
   color: rgb(133 77 14 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-teal-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(45 212 191 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-black:hover {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 .hover\:t-opacity-75:hover {
