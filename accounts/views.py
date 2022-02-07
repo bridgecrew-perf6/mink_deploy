@@ -27,11 +27,10 @@ def signup(request: HttpRequest):
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
-            signed_user = form.save()
+            signed_user = User.join_by_form(form)
             auth_login(request, signed_user)
-            messages.success(request, "회원가입 환영합니다.")
-            # signed_user.send_welcome_email()  # FIXME: Celery로 처리하는 것을 추천.
-            next_url = request.GET.get('next', '')
+            messages.success(request, "회원가입이 완료되었습니다. 환영합니다.")
+            next_url = request.GET.get('next', '/')
             return redirect(next_url)
     else:
         form = SignupForm()

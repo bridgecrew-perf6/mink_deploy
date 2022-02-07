@@ -161,3 +161,13 @@ SUMMERNOTE_CONFIG = {
 }
 
 CSRF_TRUSTED_ORIGINS = ['https://mink.ming99.site']
+
+# Email with Send Grid
+GMAIL_EMAIL_API_KEY = os.environ.get("GMAIL_EMAIL_API_KEY")
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'rlaalsrbaa@gmail.com'
+EMAIL_HOST_PASSWORD = GMAIL_EMAIL_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+WELCOME_EMAIL_SENDER = EMAIL_HOST_USER

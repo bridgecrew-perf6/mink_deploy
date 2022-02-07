@@ -25,14 +25,16 @@
                         <button type="submit" class="btn btn-outline-primary float-end">로그인</button>
                     </div>
                 </form>
-                <div class="t-mt-4">
-                    <p class="t-h-5 t-leading-9 t-border-t-4 border-indigo-500">아이디가 기억나지 않는다면? <a
-                            href="{% url 'accounts:find_username' %}"
-                            class="t-text-cyan-600 float-end">아이디찾기</a></p>
-                    <p class="t-h-11 t-leading-10 t-mt-5 t-border-y-4 border-indigo-500">아직 아이디가 없다면? <a
-                            href="{% url 'accounts:signup'%}" class="t-text-cyan-600 float-end">회원가입</a>
-                    </p>
-                    <button class="t-bg-yellow-400 btn btn-outline t-mt-3"
+                <div class="t-border-x-2 t-w-fit t-mt-4">
+                    <a href="{% url 'accounts:find_username' %}"
+                       class="t-text-cyan-600 t-mt-4 t-w-fit t-border-r-2 t-px-1">아이디찾기</a>
+                    <a href="{% url 'accounts:reset_password' %}"
+                       class="t-text-cyan-600 t-w-fit t-border-r-2 t-pr-1">비밀번호 찾기</a>
+                    <a href="{% url 'accounts:signup'%}"
+                       class="t-text-cyan-600 t-w-fit t-pr-1">회원가입</a>
+                </div>
+                <div>
+                    <button class="t-bg-yellow-400 btn btn-outline t-mt-3 t-w-full"
                             onclick="location.href='{% url 'accounts:kakao_login' %}?next={{request.GET.next}}'">
                         카카오 로그인 <i
                             class="far fa-comment"></i></a>

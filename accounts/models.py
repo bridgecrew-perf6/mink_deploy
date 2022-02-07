@@ -1,3 +1,11 @@
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+from django.contrib.sessions.backends import file
+
+if TYPE_CHECKING:
+    from accounts.forms import SignupForm
+
 import os
 import random
 from io import BytesIO
@@ -8,8 +16,11 @@ from django.contrib.auth.models import AbstractUser
 from django.core.files import File
 from django.db import models
 from django.db.models import QuerySet
-from django.http import HttpRequest
-from django.shortcuts import resolve_url
+from django.http import HttpRequest, HttpResponse
+from django.shortcuts import resolve_url, redirect
+from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError
+from django.template.loader import render_to_string
 
 
 # Create your models here.
@@ -70,7 +81,46 @@ class User(AbstractUser):
 
         login(request, user)
 
+    @property
     def profile_img_url(self):
         if self.profile_img:
             return self.profile_img.url;
         return resolve_url('pydenticon_image', data=self.username)
+
+    @classmethod
+    def join(cls, username, email, password, name, provider_type_code, provider_accounts_id) -> User:
+        user = User.objects.create_user(username=username, email=email, password=password, name=name,
+                                        provider_type_code=provider_type_code,
+                                        provider_accounts_id=provider_accounts_id)
+
+        cls.after_join(user)
+
+        return user
+
+    @classmethod
+    def join_by_form(cls, form: SignupForm) -> User:
+        user = form.save()
+
+        cls.after_join(user)
+
+        return user
+
+    @staticmethod
+    def after_join(user: User) -> None:
+        user.send_welcome_email()
+
+    # https://github.com/askcompany-kr/django-with-react-rev2/ 참조
+    def send_welcome_email(self):
+        if not self.email:
+            return
+
+        subject = render_to_string("accounts/welcome_email_subject.txt", {
+            "user": self,
+        }).strip()
+
+        content = render_to_string("accounts/welcome_email_content.txt", {
+            "user": self,
+        })
+
+        sender_email = settings.WELCOME_EMAIL_SENDER
+        send_mail(subject, content, sender_email, [self.email], fail_silently=False)

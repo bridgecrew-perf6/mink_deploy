@@ -93,25 +93,31 @@
             {%endif%}
             {% if article_list %}
             <div class="t-border-t t-border-slate-400">
-                {% for article in article_list %}
+                {% for article_ in article_list %}
+                {% if article_.id == article.id %}
                 <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
                    href="{% url 'board:detail' board.id article.id%}">
-                    <span class="t-w-screen t-break-all	">{{article.subject}}</span>
-                    <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
-                    <div class="t-flex t-pt-1">
+                    {%else%}
+                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
+                       href="{% url 'board:detail' board.id article.id%}">
+                        {%endif%}
+                        <span><i class="far fa-hand-point-right"></i></span>
+                        <span class="t-w-screen t-break-all	">{{article_.subject}}</span>
+                        <span class="t-text-xs t-text-blue-600/75">{{ article_.comment.count}}</span>
+                        <div class="t-flex t-pt-1">
                         <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i
-                                class="far fa-thumbs-up"></i> {{article.voter.count}}</span>
-                        {% if article.created_string == False %}
-                        <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</td></span>
-                        {% else %}
-                        <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article.created_string }}</span>
-                        {% endif %}
-                        <span class="t-text-xs t-w-full t-text-right">{{article.writer}}</span>
-                    </div>
-                </a>
-                {%endfor%}
+                                class="far fa-thumbs-up"></i> {{article_.voter.count}}</span>
+                            {% if article_.created_string == False %}
+                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
+                            <i class="far fa-clock"></i> {{ article_.registered_date|date:'m월 d일' }}</td></span>
+                            {% else %}
+                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
+                            <i class="far fa-clock"></i> {{ article_.created_string }}</span>
+                            {% endif %}
+                            <span class="t-text-xs t-w-full t-text-right">{{article_.writer}}</span>
+                        </div>
+                    </a>
+                    {%endfor%}
             </div>
             <ul class="pagination justify-content-center t-mt-5 t-pb-5">
                 <!-- 이전페이지 -->
@@ -179,6 +185,7 @@
             },
         });
     })
+
 
 
 

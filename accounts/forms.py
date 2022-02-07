@@ -9,14 +9,12 @@ class SignupForm(UserCreationForm):
         super().__init__(*args, **kwargs)
         self.fields['email'].required = True
         self.fields['name'].required = True
+        self.fields['username'].label = '아이디'
+        self.fields['profile_img'].widget.attrs['accept'] = 'image/png, image/gif, image/jpeg'
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username', 'email', 'name']
-
-        labels = {
-            'username': '아이디',
-        }
+        fields = ['username', 'email', 'name', 'gender', 'password1', 'password2',  'profile_img']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -25,7 +23,6 @@ class SignupForm(UserCreationForm):
             if qs.exists():
                 raise forms.ValidationError("이미 등록된 이메일 주소입니다.")
         return email
-
 
 class FindUsernameForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
