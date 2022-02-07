@@ -496,6 +496,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-right: 1.25rem;
 }
 
+.t-mt-4 {
+  margin-top: 1rem;
+}
+
 .t-mt-3 {
   margin-top: 0.75rem;
 }
@@ -540,20 +544,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }
 
-.t-mb-4 {
-  margin-bottom: 1rem;
-}
-
-.t-mt-4 {
-  margin-top: 1rem;
-}
-
 .t-block {
   display: block;
-}
-
-.t-inline {
-  display: inline;
 }
 
 .t-flex {
@@ -588,14 +580,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: fit-content;
 }
 
+.t-w-full {
+  width: 100%;
+}
+
 .t-w-max {
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-}
-
-.t-w-full {
-  width: 100%;
 }
 
 .t-w-screen {
@@ -626,20 +618,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-wrap: wrap;
 }
 
-.t-justify-start {
-  justify-content: flex-start;
-}
-
 .t-justify-end {
   justify-content: flex-end;
 }
 
 .t-justify-center {
   justify-content: center;
-}
-
-.t-justify-self-start {
-  justify-self: start;
 }
 
 .t-whitespace-nowrap {
@@ -659,8 +643,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-right-width: 2px;
 }
 
-.t-border-t-2 {
-  border-top-width: 2px;
+.t-border-r-2 {
+  border-right-width: 2px;
 }
 
 .t-border-t {
@@ -669,14 +653,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-border-b {
   border-bottom-width: 1px;
-}
-
-.t-border-b-2 {
-  border-bottom-width: 2px;
-}
-
-.t-border-r-2 {
-  border-right-width: 2px;
 }
 
 .t-border-slate-400 {
@@ -709,6 +685,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
 }
 
+.t-bg-current {
+  background-color: currentColor;
+}
+
+.t-px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
 .t-py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
@@ -719,13 +704,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 0.75rem;
 }
 
-.t-px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
-
 .t-pt-\[56px\] {
   padding-top: 56px;
+}
+
+.t-pr-1 {
+  padding-right: 0.25rem;
 }
 
 .t-pl-6 {
@@ -762,18 +746,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-pb-6 {
   padding-bottom: 1.5rem;
-}
-
-.t-pl-2 {
-  padding-left: 0.5rem;
-}
-
-.t-pl-1 {
-  padding-left: 0.25rem;
-}
-
-.t-pr-1 {
-  padding-right: 0.25rem;
 }
 
 .t-text-left {
