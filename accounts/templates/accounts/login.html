@@ -3,44 +3,47 @@
 <div class="t-bg-slate-100 t-h-screen">
     <div class="container">
         <div class="row"></div>
-        <div class="">
-            <div class="login-form t-bg-white mt-4 p-4 t-h-fit t-m-auto" style="width:22rem;">
-                <form method="post" action="{% url 'accounts:login' %}" class="row g-3">
-                    <h4>로그인</h4>
-                    <hr>
-                    {% csrf_token %}
-                    {% include "form_errors.html" %}
-                    <div class="col-12">
-                        <label for="username">아이디</label>
-                        <input type="text" name="username" class="form-control" placeholder="Username" id="username"
-                               value="{{ form.username.value|default_if_none:'' }}">
-                    </div>
-                    <div class=" col-12">
-                        <label for="password">비밀번호</label>
-                        <input type="password" name="password" class="form-control" placeholder="Password" id="password"
-                               value="{{ form.password.value|default_if_none:'' }}">
-                    </div>
-                    <input type="hidden" name="next" value="{{ next }}">
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-outline-primary float-end">로그인</button>
-                    </div>
-                </form>
-                <div class="t-border-x-2 t-w-fit t-mt-4">
-                    <a href="{% url 'accounts:find_username' %}"
-                       class="t-text-cyan-600 t-mt-4 t-w-fit t-border-r-2 t-px-1">아이디찾기</a>
-                    <a href="{% url 'accounts:reset_password' %}"
-                       class="t-text-cyan-600 t-w-fit t-border-r-2 t-pr-1">비밀번호 찾기</a>
-                    <a href="{% url 'accounts:signup'%}"
-                       class="t-text-cyan-600 t-w-fit t-pr-1">회원가입</a>
+        <div class="login-form t-bg-white p-4 t-mt-4 t-h-fit t-m-auto" style="width:22rem;">
+            <form method="post" action="{% url 'accounts:login' %}" class="row g-3">
+                <h4 class="t-my-4">로그인</h4>
+                <hr>
+                {% csrf_token %}
+                {% include "form_errors.html" %}
+                <div class="col-12">
+                    <label for="username">아이디</label>
+                    <input type="text" name="username" class="form-control" placeholder="Username" id="username"
+                           value="{{ form.username.value|default_if_none:'' }}">
                 </div>
-                <div>
-                    <button class="t-bg-yellow-400 btn btn-outline t-mt-3 t-w-full"
-                            onclick="location.href='{% url 'accounts:kakao_login' %}?next={{request.GET.next}}'">
-                        카카오 로그인 <i
-                            class="far fa-comment"></i></a>
-                    </button>
+                <div class=" col-12">
+                    <label for="password">비밀번호</label>
+                    <input type="password" name="password" class="form-control" placeholder="Password" id="password"
+                           value="{{ form.password.value|default_if_none:'' }}">
                 </div>
+                <input type="hidden" name="next" value="{{ next }}">
+                <div class="col-12">
+                    <button type="submit" class="btn btn-outline-primary float-end">로그인</button>
+                </div>
+            </form>
+            <div class=" t-w-full t-mt-4 t-text-center">
+                    <span>
+                        <a href="{% url 'accounts:find_username' %}"
+                           class="t-text-cyan-600 t-w-fit">아이디</a>
+                        <i class="fas fa-genderless" style="color:gray; font-size: 0.75rem;"></i>
+                        <a href="{% url 'accounts:reset_password' %}"
+                           class="t-text-cyan-600 t-w-fit t-border-r-2 t-pr-1">비밀번호찾기</a>
+                    </span>
+
+                <a href="{% url 'accounts:signup'%}"
+                   class="t-text-cyan-600 t-w-fit t-pr-1">회원가입</a>
             </div>
+            <div>
+                <button class="t-bg-yellow-400 btn btn-outline t-mt-3 t-w-full"
+                        onclick="location.href='{% url 'accounts:kakao_login' %}?next={{request.GET.next}}'">
+                    카카오 로그인 <i
+                        class="far fa-comment"></i></a>
+                </button>
+            </div>
+
         </div>
     </div>
 </div>

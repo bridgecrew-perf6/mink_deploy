@@ -12,8 +12,18 @@
                 <hr class="t-my-3">
                 {% csrf_token %}
                 {% bootstrap_form form %}
+                <div class="t-w-full t-text-right">
                 <button class="btn btn-outline-primary" type="submit">아이디 찾기</button>
+                </div>
             </form>
+            <div class=" t-w-full t-mt-4 t-text-center">
+                    <a href="{% url 'accounts:login' %}"
+                       class="t-text-cyan-600 t-w-fit t-border-r-2 t-px-1 ">로그인</a>
+                    <a href="{% url 'accounts:reset_password' %}"
+                       class="t-text-cyan-600 t-w-fit t-border-r-2 t-pr-1">비밀번호찾기</a>
+                    <a href="{% url 'accounts:signup'%}"
+                       class="t-text-cyan-600 t-w-fit t-pr-1">회원가입</a>
+                </div>
         </div>
     </div>
 </div>
