@@ -8,15 +8,11 @@
             <div class="card-header">
                 <div class="t-cursor-pointer t-w-fit"
                      onclick="location.href='{% url 'board:detail' board.id article.id%}'">
-                    <span>{{article.subject}}</span>
+                    <span class="-t-text-xs">{{article.subject}}</span>
                 </div>
             </div>
             <div class="card-body t-min-h-screen t-flex-wrap">
                 <p class="card-text t-text-left">{{article.content|safe}}</p>
-                {% if article.mainphoto %}
-                <img src="{{ article.photo.url }}" alt="" height="600">
-                <br>
-                {% endif %}
             </div>
             <div class="t-w-full t-flex t-justify-center t-mb-5">
                 <button class=" t-m-auto t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
@@ -83,8 +79,8 @@
     </div>
     <!-- 리스트 -->
     <section class="section-article-list">
-        <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
-            <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
+        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
+            <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
             {% if request.user.is_authenticated %}
             <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
                 <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
@@ -95,13 +91,13 @@
             <div class="t-border-t t-border-slate-400">
                 {% for article_ in article_list %}
                 {% if article_.id == article.id %}
-                <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
+                <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black t-bg-sky-100"
                    href="{% url 'board:detail' board.id article.id%}">
+                    <span><i class="far fa-hand-point-right"></i></span>
                     {%else%}
-                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
+                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black visited:t-text-slate-300"
                        href="{% url 'board:detail' board.id article.id%}">
                         {%endif%}
-                        <span><i class="far fa-hand-point-right"></i></span>
                         <span class="t-w-screen t-break-all	">{{article_.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article_.comment.count}}</span>
                         <div class="t-flex t-pt-1">
@@ -109,7 +105,7 @@
                                 class="far fa-thumbs-up"></i> {{article_.voter.count}}</span>
                             {% if article_.created_string == False %}
                             <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article_.registered_date|date:'m월 d일' }}</td></span>
+                            <i class="far fa-clock"></i> {{ article_.registered_date|date:'m월 d일' }}</span>
                             {% else %}
                             <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
                             <i class="far fa-clock"></i> {{ article_.created_string }}</span>
@@ -117,7 +113,8 @@
                             <span class="t-text-xs t-w-full t-text-right">{{article_.writer}}</span>
                         </div>
                     </a>
-                    {%endfor%}
+                </a>
+                {%endfor%}
             </div>
             <ul class="pagination justify-content-center t-mt-5 t-pb-5">
                 <!-- 이전페이지 -->
@@ -159,7 +156,6 @@
             </ul>
             {%endif%}
         </div>
-
     </section>
 </div>
 
@@ -185,6 +181,11 @@
             },
         });
     })
+
+
+
+
+
 
 
 
