@@ -4,38 +4,38 @@
 
 <section class="section-article-list">
     <div class="t-bg-slate-100">
-        <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
-            <div><a href="/board/{{board.id}}/" class="fs-1 hover:t-text-black">{{board.name}}</a></div>
+        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
+            <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
             <div class="input-group t-pb-6 t-grid">
                 {% if board.id != 1 %}
                 {% if request.user.is_authenticated %}
-                <div class="t-g-col-4 t-mt-3 t-mb-3 t-flex t-justify-end">
-                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
-                        작성</a>
-                </div>
+                <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
+                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                    작성</a>
+            </div>
                 {%endif%}
                 {%else%}
                 {%if user.is_superuser == 1%}
-                <div class="t-g-col-4 t-mt-3 t-mb-3 t-flex t-justify-end">
-                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
-                        작성</a>
-                </div>
+                <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
+                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                    작성</a>
+            </div>
                 {%endif%}
                 {%endif%}
-                <div class="form-outline t-g-col-4 t-my-5">
-                    <form class="t-flex">
-                        <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
-                               aria-label="Search">
-                        <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
+                 <div class="form-outline t-my-5 t-px-5">
+                <form class="t-flex">
+                    <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
+                           aria-label="Search">
+                    <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
                 {% if article_list %}
-                <div class="t-border-t t-border-slate-400 t-mt-5">
+                <div class="t-border-t t-border-slate-400">
                     {% for article in article_list %}
-                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
-                       href="{% url 'board:detail' board.id article.id%}">
+                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black"
+                       href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
                         <span class="t-w-screen t-break-all">{{article.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
                         <div class="t-flex t-pt-1">

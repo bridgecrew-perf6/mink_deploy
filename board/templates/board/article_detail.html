@@ -87,18 +87,28 @@
                     작성</a>
             </div>
             {%endif%}
+            <div class="form-outline t-my-5 t-px-5">
+                <form class="t-flex">
+                    <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
+                           aria-label="Search">
+                    <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
             {% if article_list %}
             <div class="t-border-t t-border-slate-400">
                 {% for article_ in article_list %}
                 {% if article_.id == article.id %}
                 <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black t-bg-sky-100"
-                   href="{% url 'board:detail' board.id article_.id%}">
-                    <span><i class="far fa-hand-point-right"></i></span>
+                   href="{% url 'board:detail' board.id article_.id%}page={{article_list.nunber}}&kw={{request.GET.kw}}">
+                    <span><i class="far fa-hand-point-right t-text-cyan-600"></i></span>
+                    <span class="t-w-screen t-break-all t-text-cyan-600">{{article_.subject}}</span>
                     {%else%}
                     <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black visited:t-text-slate-300"
                        href="{% url 'board:detail' board.id article_.id%}">
+                        <span class="t-w-screen t-break-all">{{article_.subject}}</span>
                         {%endif%}
-                        <span class="t-w-screen t-break-all	">{{article_.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article_.comment.count}}</span>
                         <div class="t-flex t-pt-1">
                         <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i
@@ -133,11 +143,11 @@
                 {% if article_list.number|add:-5 <= page_number <= article_list.number|add:5 %}
                 {% if page_number == article_list.number %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    <a class="page-link" href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    <a class="page-link" href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
                 </li>
                 {% endif %}
                 {% endif %}
@@ -181,6 +191,10 @@
             },
         });
     })
+
+
+
+
 
 
 

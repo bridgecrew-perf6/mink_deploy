@@ -44,8 +44,10 @@ def article_detail(request: HttpRequest, board_id, article_id):
     board = get_object_or_404(Board, id=article.board_id)
     comment = Comment.objects.filter(article_id=article_id)
 
+
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
+
     if not kw:
         article_list = Article.objects.filter(board=board.id).order_by('-id')
 
