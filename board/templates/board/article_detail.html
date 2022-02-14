@@ -92,11 +92,11 @@
                 {% for article_ in article_list %}
                 {% if article_.id == article.id %}
                 <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black t-bg-sky-100"
-                   href="{% url 'board:detail' board.id article.id%}">
+                   href="{% url 'board:detail' board.id article_.id%}">
                     <span><i class="far fa-hand-point-right"></i></span>
                     {%else%}
                     <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black visited:t-text-slate-300"
-                       href="{% url 'board:detail' board.id article.id%}">
+                       href="{% url 'board:detail' board.id article_.id%}">
                         {%endif%}
                         <span class="t-w-screen t-break-all	">{{article_.subject}}</span>
                         <span class="t-text-xs t-text-blue-600/75">{{ article_.comment.count}}</span>
