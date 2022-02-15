@@ -41,7 +41,7 @@ class User(AbstractUser):
 
     reg_date = models.DateTimeField('등록날짜', auto_now_add=True)
     update_date = models.DateTimeField('갱신날짜', auto_now=True)
-
+    nickname = models.CharField('닉네임', max_length=100)
     name = models.CharField('이름', max_length=100)
     gender = models.CharField('성별', max_length=1, blank=True, choices=GenderChoices.choices)
     profile_img = models.ImageField('프로필이미지', blank=True, upload_to="accounts/profile_img/%Y/%m/%d",
@@ -63,10 +63,11 @@ class User(AbstractUser):
             name = provider_accounts_nickname if provider_accounts_nickname else username
             email = ""
             password = str(random.randint(1000, 9999))
-
+            nickname = name
             user: User = User.objects.create_user(username=username, email=email, password=password, name=name,
                                                   provider_type_code=provider_type_code,
-                                                  provider_accounts_id=provider_accounts_id)
+                                                  provider_accounts_id=provider_accounts_id,
+                                                  nickname=nickname)
 
             if provider_accounts_thumbnail_image_url:
                 provider_accounts_thumbnail_image_url_parsed = urlparse(provider_accounts_thumbnail_image_url)

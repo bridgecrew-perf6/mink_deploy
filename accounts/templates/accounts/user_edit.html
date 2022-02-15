@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{%block content%}
+<div class="container t-flex t-flex-row t-h-10">
+    <a class="t-text-2xl t-mr-4 t-leading-10 t-font-thin" href="#">개인정보 관리</a>
+    <a class="t-text-2xl t-mr-4 t-leading-10 t-font-thin" href="#">비밀번호 변경</a>
+    <a class="t-text-2xl t-leading-10" href="#">회원 탈퇴</a>
+</div>
+</nav>
+<div class="t-bg-slate-100 t-h-screen">
+    <div class="container t-mt-5">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3 t-bg-white t-border-2">
+                <p class="t-text-2xl t-mt-4">개인정보 관리</p>
+                <hr class="t-mb-4">
+                {% if user.email%}
+                <p class="t-my-2">이메일 : {{user.email}}</p>
+                {%endif%}
+                <p class="t-my-2">아이디 : {{user.username}}</p>
+                <p class="t-my-2">닉네임 : {{user.nickname}}</p>
+                <p class="t-my-2">이름 : {{user.name}}</p>
+                {{user.profile_img}}
+                프로필 이미지 <img class="t-w-[22px] t-h-[22px] t-rounded-full t-object-fit t-inline-block"
+                             src="/{{user.profile_img}}">
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

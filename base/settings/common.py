@@ -157,6 +157,8 @@ SUMMERNOTE_CONFIG = {
     'summernote': {
         'width': '100%',
         'height': '700',
+        'lang': 'ko-KR',
+
     }
 }
 

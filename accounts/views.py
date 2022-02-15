@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from .decorators import logout_required
+from django.contrib.auth.decorators import login_required
 from lazy_string import LazyString
 from .models import User
 from django.urls import reverse
@@ -25,7 +26,7 @@ def login(request: HttpRequest):
 @logout_required
 def signup(request: HttpRequest):
     if request.method == 'POST':
-        form = SignupForm(request.POST)
+        form = SignupForm(request.POST, request.FILES)
         if form.is_valid():
             signed_user = User.join_by_form(form)
             auth_login(request, signed_user)
@@ -131,4 +132,14 @@ def kakao_login_callback(request):
     next = request.GET.get('state', '')
 
     return redirect("index" if not next else next)
+
+
+@login_required
+def user_edit(request):
+
+    user_id = request.user.id
+    user = User.objects.get(id=user_id)
+    return render(request, 'accounts/user_edit.html', {
+        'user_status': user
+    })
 

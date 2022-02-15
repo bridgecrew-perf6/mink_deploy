@@ -68,7 +68,7 @@
                         <span> 프로필 </span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a href="#" class="dropdown-item"><i class="bi bi-gear-fill"></i> 사용자 정보</a></li>
+                        <li><a href="{% url 'accounts:user_edit'%}" class="dropdown-item"><i class="bi bi-gear-fill"></i> 사용자 정보</a></li>
                         <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="bi bi-gear-fill"></i>로그아웃</a>
                         </li>
                         <li>

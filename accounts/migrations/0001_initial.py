@@ -26,6 +26,7 @@ class Migration(migrations.Migration):
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('reg_date', models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')),
                 ('update_date', models.DateTimeField(auto_now=True, verbose_name='갱신날짜')),
+                ('nickname', models.CharField(max_length=100, verbose_name='닉네임')),
                 ('name', models.CharField(max_length=100, verbose_name='이름')),
                 ('gender', models.CharField(blank=True, choices=[('M', '남성'), ('F', '여성')], max_length=1, verbose_name='성별')),
                 ('profile_img', models.ImageField(blank=True, help_text='gif/png/jpg 이미지를 업로드해주세요.', upload_to='accounts/profile_img/%Y/%m/%d', verbose_name='프로필이미지')),

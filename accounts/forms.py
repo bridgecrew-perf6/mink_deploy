@@ -10,11 +10,11 @@ class SignupForm(UserCreationForm):
         self.fields['email'].required = True
         self.fields['name'].required = True
         self.fields['username'].label = '아이디'
-        self.fields['profile_img'].widget.attrs['accept'] = 'image/png, image/gif, image/jpeg'
+        self.fields['profile_img'].widget.attrs['accept'] = 'image/png, image/gif, image/jpeg, image/jpg'
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ['username', 'email', 'name', 'gender', 'password1', 'password2',  'profile_img']
+        fields = ['username', 'email', 'name', 'gender', 'password1', 'password2',  'nickname', 'profile_img']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')

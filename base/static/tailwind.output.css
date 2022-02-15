@@ -487,6 +487,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1rem;
 }
 
+.t-my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 .t-my-5 {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -511,6 +516,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mt-5 {
   margin-top: 1.25rem;
+}
+
+.t-mb-4 {
+  margin-bottom: 1rem;
 }
 
 .t-mr-3 {
@@ -549,8 +558,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }
 
+.t-mr-4 {
+  margin-right: 1rem;
+}
+
 .t-block {
   display: block;
+}
+
+.t-inline-block {
+  display: inline-block;
 }
 
 .t-flex {
@@ -573,6 +590,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-h-7 {
   height: 1.75rem;
+}
+
+.t-h-\[22px\] {
+  height: 22px;
+}
+
+.t-h-10 {
+  height: 2.5rem;
+}
+
+.t-h-12 {
+  height: 3rem;
 }
 
 .t-min-h-screen {
@@ -599,6 +628,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100vw;
 }
 
+.t-w-\[22px\] {
+  width: 22px;
+}
+
 .t-max-w-screen-lg {
   max-width: 1024px;
 }
@@ -613,6 +646,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-grid-cols-1 {
   grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.t-flex-row {
+  flex-direction: row;
 }
 
 .t-flex-col {
@@ -641,6 +678,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-rounded-lg {
   border-radius: 0.5rem;
+}
+
+.t-rounded-full {
+  border-radius: 9999px;
+}
+
+.t-border-2 {
+  border-width: 2px;
 }
 
 .t-border-r-2 {
@@ -775,6 +820,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   text-align: right;
 }
 
+.t-text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
 .t-text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -785,8 +835,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
+.t-font-light {
+  font-weight: 300;
+}
+
+.t-font-thin {
+  font-weight: 100;
+}
+
+.t-not-italic {
+  font-style: normal;
+}
+
 .t-leading-8 {
   line-height: 2rem;
+}
+
+.t-leading-10 {
+  line-height: 2.5rem;
 }
 
 .t-text-yellow-700 {
@@ -849,24 +915,9 @@ html > body {
   text-underline-position: under;
 }
 
-.visited\:t-bg-cyan-600:visited {
-  --tw-bg-opacity: 1;
-  background-color: rgb(8 145 178 / var(--tw-bg-opacity));
-}
-
-.visited\:t-bg-cyan-100:visited {
-  --tw-bg-opacity: 1;
-  background-color: rgb(207 250 254 / var(--tw-bg-opacity));
-}
-
 .visited\:t-text-slate-300:visited {
   --tw-text-opacity: 1;
   color: rgb(203 213 225 / var(--tw-text-opacity));
-}
-
-.visited\:t-text-purple-600:visited {
-  --tw-text-opacity: 1;
-  color: rgb(147 51 234 / var(--tw-text-opacity));
 }
 
 .hover\:t-text-yellow-800:hover {
@@ -882,11 +933,6 @@ html > body {
 .hover\:t-text-teal-400:hover {
   --tw-text-opacity: 1;
   color: rgb(45 212 191 / var(--tw-text-opacity));
-}
-
-.hover\:t-text-black:hover {
-  --tw-text-opacity: 1;
-  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px) {
