@@ -518,6 +518,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1.25rem;
 }
 
+.t-mr-4 {
+  margin-right: 1rem;
+}
+
 .t-mb-4 {
   margin-bottom: 1rem;
 }
@@ -558,10 +562,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }
 
-.t-mr-4 {
-  margin-right: 1rem;
-}
-
 .t-block {
   display: block;
 }
@@ -588,20 +588,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 100vh;
 }
 
-.t-h-7 {
-  height: 1.75rem;
+.t-h-10 {
+  height: 2.5rem;
 }
 
 .t-h-\[22px\] {
   height: 22px;
 }
 
-.t-h-10 {
-  height: 2.5rem;
-}
-
-.t-h-12 {
-  height: 3rem;
+.t-h-7 {
+  height: 1.75rem;
 }
 
 .t-min-h-screen {
@@ -618,6 +614,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100%;
 }
 
+.t-w-\[22px\] {
+  width: 22px;
+}
+
 .t-w-max {
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -626,10 +626,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-screen {
   width: 100vw;
-}
-
-.t-w-\[22px\] {
-  width: 22px;
 }
 
 .t-max-w-screen-lg {
@@ -676,12 +672,12 @@ Ensure the default browser behavior of the `hidden` attribute.
   word-break: break-all;
 }
 
-.t-rounded-lg {
-  border-radius: 0.5rem;
-}
-
 .t-rounded-full {
   border-radius: 9999px;
+}
+
+.t-rounded-lg {
+  border-radius: 0.5rem;
 }
 
 .t-border-2 {
@@ -835,24 +831,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   line-height: 1.25rem;
 }
 
-.t-font-light {
-  font-weight: 300;
-}
-
 .t-font-thin {
   font-weight: 100;
 }
 
-.t-not-italic {
-  font-style: normal;
+.t-leading-10 {
+  line-height: 2.5rem;
 }
 
 .t-leading-8 {
   line-height: 2rem;
-}
-
-.t-leading-10 {
-  line-height: 2.5rem;
 }
 
 .t-text-yellow-700 {

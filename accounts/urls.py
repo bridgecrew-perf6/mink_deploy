@@ -12,6 +12,7 @@ urlpatterns = [
     path('login/kakao/', views.kakao_login, name="kakao_login"),
     path('login/kakao/callback/', views.kakao_login_callback, name="kakao_login_callback"),
     path('settings/edit/', views.user_edit, name="user_edit"),
+    path('settings/change_password/', views.change_password, name="change_password"),
     path('reset_password/', auth_views.PasswordResetView.as_view(
         success_url=reverse_lazy('accounts:password_reset_done'),
         template_name='accounts/password_reset/reset_password.html',

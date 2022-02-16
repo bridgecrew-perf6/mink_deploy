@@ -1,8 +1,9 @@
 {% extends "layout.html" %}
+
 {%block content%}
 <div class="container t-flex t-flex-row t-h-10">
     <a class="t-text-2xl t-mr-4 t-leading-10 t-font-thin" href="#">개인정보 관리</a>
-    <a class="t-text-2xl t-mr-4 t-leading-10 t-font-thin" href="#">비밀번호 변경</a>
+    <a class="t-text-2xl t-mr-4 t-leading-10 t-font-thin" href="{% url 'accounts:change_password'%}">비밀번호 변경</a>
     <a class="t-text-2xl t-leading-10" href="#">회원 탈퇴</a>
 </div>
 </nav>

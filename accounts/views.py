@@ -1,18 +1,22 @@
 import os
+
 import requests
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import login as auth_login
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db.models import QuerySet
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import login as auth_login
-from .decorators import logout_required
-from django.contrib.auth.decorators import login_required
-from lazy_string import LazyString
-from .models import User
 from django.urls import reverse
+from lazy_string import LazyString
+from django.contrib.auth import update_session_auth_hash
+
 from accounts.forms import SignupForm, FindUsernameForm
+from .decorators import logout_required
+from .models import User
 
 
 # Create your views here.
@@ -140,6 +144,22 @@ def user_edit(request):
     user_id = request.user.id
     user = User.objects.get(id=user_id)
     return render(request, 'accounts/user_edit.html', {
-        'user_status': user
+        'user': user
     })
 
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, '비밀번호가 변경되었습니다.')
+            return redirect('index')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'accounts/change_password.html', {
+        'form': form
+    })
