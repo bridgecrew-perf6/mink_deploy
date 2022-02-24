@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'django_bootstrap5',
     'django_summernote',
+    'django_extensions',
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
@@ -173,3 +174,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
 WELCOME_EMAIL_SENDER = EMAIL_HOST_USER
+
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}

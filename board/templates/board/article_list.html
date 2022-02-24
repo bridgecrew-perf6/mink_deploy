@@ -67,7 +67,7 @@
                     {% endif %}
                     <!-- 페이지리스트 -->
                     {% for page_number in article_list.paginator.page_range %}
-                    {% if article_list.number|add:-5 <= page_number <= article_list.number|add:5 %}
+                    {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
                     {% if page_number == article_list.number %}
                     <li class="page-item active" aria-current="page">
                         <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>

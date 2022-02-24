@@ -11,12 +11,12 @@ def gen_data(app, schema_editor):
     # 공지사항 테스트 데이터
     board = Board(name="공지사항")
     board.save()
-    for id in range(1, 20):
+    for id in range(1, 120):
         subject = f"공지사항 입니다.{id}"
         content = f"좋은 아침입니다.{id}"
         user = User.objects.get(id=1)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    for id in range(1, 20):
+    for id in range(1, 120):
         subject = f"공지사항 필독{id}"
         content = f"맛있게 먹었습니다..{id}"
         user = User.objects.get(id=2)
@@ -26,12 +26,12 @@ def gen_data(app, schema_editor):
     # 동물게시판 테스트 데이터
     board = Board(name="밍크마당")
     board.save()
-    for id in range(1, 20):
+    for id in range(1, 120):
         subject = f"고양이 보고가세요{id}"
         content = f"좋은 아침입니다.{id}"
         user = User.objects.get(id=1)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
-    for id in range(1, 20):
+    for id in range(1, 120):
         subject = f"강아지 보고가세요{id}"
         content = f"정말 귀엽죠?{id}"
         user = User.objects.get(id=1)
