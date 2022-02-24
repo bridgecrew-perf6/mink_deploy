@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('reg_date', models.DateTimeField(auto_now_add=True, verbose_name='등록날짜')),
-                ('name', models.CharField(max_length=100, verbose_name='상품명(내부용)')),
+                ('name', models.CharField(max_length=100, verbose_name='게시판명')),
             ],
         ),
     ]
