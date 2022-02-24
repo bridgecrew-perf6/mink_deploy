@@ -8,5 +8,5 @@ django-summernote
 lazy-string
 requests
 django-dotenv
-django-extionsions
+django_extensions
 graphviz
