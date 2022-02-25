@@ -1,4 +1,6 @@
 from django.db import models
+from django_summernote.models import Attachment
+
 from accounts.models import User
 from datetime import datetime, timedelta, timezone
 
@@ -23,7 +25,6 @@ class Article(models.Model):
     is_blind = models.BooleanField('공개 여부', default=False)
     voter = models.ManyToManyField(User, related_name='voter_article')
     writer = models.CharField('글쓴이', max_length=100)
-    article_photo = models.ImageField(blank=True, null=True)
 
     @property
     def created_string(self):
@@ -78,5 +79,14 @@ class Comment(models.Model):
 
 
 class Photo(models.Model):
+    class Meta:
+        ordering = ['-id']
+        verbose_name = '서머노트 첨부파일'
+        verbose_name_plural = '서머노트 첨부파일들'
+
     article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='images/', blank=True, null=True)
+    attachment = models.OneToOneField(Attachment, on_delete=models.DO_NOTHING)
+
+    @property
+    def url(self):
+        return self.attachment.file.url

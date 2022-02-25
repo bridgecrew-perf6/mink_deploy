@@ -3,7 +3,8 @@
 {%block content%}
 <div class="t-bg-slate-100">
     <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
-        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}</a></div>
+        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}} {{image}}
+        </a></div>
         <div class="card">
             <div class="card-header">
                 <div class="t-cursor-pointer t-w-fit"
@@ -140,14 +141,18 @@
                 {% endif %}
                 <!-- 페이지리스트 -->
                 {% for page_number in article_list.paginator.page_range %}
-                    {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
+                {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
                 {% if page_number == article_list.number %}
                 <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    <a class="page-link"
+                       href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{
+                        page_number }}</a>
                 </li>
                 {% else %}
                 <li class="page-item">
-                    <a class="page-link" href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    <a class="page-link"
+                       href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{
+                        page_number }}</a>
                 </li>
                 {% endif %}
                 {% endif %}
@@ -191,6 +196,7 @@
             },
         });
     })
+
 </script>
 </div>
 {% endblock%}
