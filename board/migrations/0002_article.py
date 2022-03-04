@@ -63,19 +63,5 @@ class Migration(migrations.Migration):
                 ('writer', models.CharField(max_length=100, verbose_name='글쓴이')),
             ],
         ),
-        migrations.AddField(
-            model_name='article',
-            name='article_photo',
-            field=models.ImageField(blank=True, null=True, upload_to=''),
-        ),
-        migrations.CreateModel(
-            name='Photo',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='images/')),
-                ('article',
-                 models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='board.article')),
-            ],
-        ),
         migrations.RunPython(gen_data),
     ]

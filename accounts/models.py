@@ -23,9 +23,6 @@ from django.core.mail import send_mail, BadHeaderError
 from django.template.loader import render_to_string
 
 
-# Create your models here.
-
-
 class User(AbstractUser):
     class GenderChoices(models.TextChoices):
         MALE = "M", "남성"

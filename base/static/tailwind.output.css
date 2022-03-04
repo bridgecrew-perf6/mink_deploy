@@ -562,6 +562,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 0.75rem;
 }
 
+.t-mr-2 {
+  margin-right: 0.5rem;
+}
+
 .t-block {
   display: block;
 }
@@ -701,14 +705,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
 }
 
-.t-bg-slate-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-}
-
 .t-bg-slate-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
 }
 
 .t-bg-white {
@@ -729,6 +733,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-sky-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.t-py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .t-px-1 {

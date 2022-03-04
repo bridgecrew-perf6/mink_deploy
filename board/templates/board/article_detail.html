@@ -3,7 +3,7 @@
 {%block content%}
 <div class="t-bg-slate-100">
     <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
-        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}} {{image}}
+        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}
         </a></div>
         <div class="card">
             <div class="card-header">
@@ -84,7 +84,7 @@
             <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
             {% if request.user.is_authenticated %}
             <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
-                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
                     작성</a>
             </div>
             {%endif%}
@@ -196,6 +196,8 @@
             },
         });
     })
+
+
 
 </script>
 </div>

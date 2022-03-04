@@ -5,7 +5,7 @@
 <div class="t-bg-slate-100">
     <div class="container">
         <h1 class="t-pt-3 fs-1">게시글 등록</h1>
-        <form method="post" class="post-form my-3">
+        <form method="post" class="post-form">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-outline-primary">저장하기</button>

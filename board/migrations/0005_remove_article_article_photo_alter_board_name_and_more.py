@@ -10,18 +10,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='article',
-            name='article_photo',
-        ),
         migrations.AlterField(
             model_name='board',
             name='name',
             field=models.CharField(max_length=100, verbose_name='상품명(내부용)'),
         ),
-        migrations.AlterField(
-            model_name='photo',
-            name='image',
-            field=models.TextField(verbose_name='이미지'),
-        ),
+
     ]

@@ -1,6 +1,8 @@
-from django.db import models
-from django_summernote.models import Attachment
+import re
 
+from django.db import models
+from django_summernote.models import Attachment, AbstractAttachment
+from django.conf import settings
 from accounts.models import User
 from datetime import datetime, timedelta, timezone
 
@@ -48,6 +50,12 @@ class Article(models.Model):
     def __str__(self):
         return self.subject
 
+    def extract_attachments(self) -> list[AbstractAttachment, ...]:
+        img_urls = re.findall(r'src="(.*?)"', self.body)
+        img_urls = [img_url.replace(settings.MEDIA_URL, '') for img_url in img_urls]
+
+        return Attachment.objects.filter(file__in=img_urls)
+
 
 class Comment(models.Model):
     reg_date = models.DateTimeField('등록날짜', auto_now_add=True)
@@ -78,15 +86,3 @@ class Comment(models.Model):
             return False
 
 
-class Photo(models.Model):
-    class Meta:
-        ordering = ['-id']
-        verbose_name = '서머노트 첨부파일'
-        verbose_name_plural = '서머노트 첨부파일들'
-
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
-    attachment = models.OneToOneField(Attachment, on_delete=models.DO_NOTHING)
-
-    @property
-    def url(self):
-        return self.attachment.file.url

@@ -4,14 +4,12 @@ import json
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_POST
-from django_summernote.models import AbstractAttachment
 from .forms import ArticleForm, CommentForm
-from board.models import Board, Article, Comment, Photo
-from accounts.models import User
+from board.models import Board, Article, Comment
 
 
 def category(request: HttpRequest, board_id):
@@ -43,7 +41,8 @@ def article_detail(request: HttpRequest, board_id, article_id):
     article = get_object_or_404(Article, id=article_id)
     board = get_object_or_404(Board, id=article.board_id)
     comment = Comment.objects.filter(article_id=article_id)
-    image = Photo.url
+
+
 
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
@@ -62,7 +61,6 @@ def article_detail(request: HttpRequest, board_id, article_id):
                'board': board,
                'comment': comment,
                'article_list': page_obj,
-               'image': image,
                }
     return render(request, 'board/article_detail.html', context)
 

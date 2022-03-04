@@ -157,7 +157,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SUMMERNOTE_CONFIG = {
     'summernote': {
         'width': '100%',
-        'height': '700',
+        'height': '500',
         'lang': 'ko-KR',
 
     }
