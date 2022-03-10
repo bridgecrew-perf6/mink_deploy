@@ -4,44 +4,7 @@
 <section class="section-main-index">
     <div class="t-bg-slate-100 t-min-h-screen">
         <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-min-h-screen t-m-auto">
-            <div class="t-grid t-grid-cols-1 sm:t-grid-cols-2 lg:t-grid-cols-2">
-                <!-- 밍크마당 시작 -->
-                {% if mink_index %}
-                <div class=" t-mt-5 t-mr-3 t-pb-5">
-                    <a href="{% url 'board:category' 2 %}"
-                       class="t-text-teal-400 fs-2 t-w-max t-pb-1 hover:t-text-teal-400">밍크마당</a>
-                    <div class="t-mt-3 t-border-t t-border-slate-400">
-                        {% for mink in mink_index %}
-                        <a class="t-border-b t-border-slate-400 t-w-full t-block t-py-1 t-text-black visited:t-text-slate-300"
-                           href="{% url 'board:detail' mink.board_id mink.id%}">
-                            <span>{{mink.subject}}</span>
-                            <span class="t-text-xs t-text-blue-600/75">{{ mink.comment.count}}</span>
-                        </a>
-                        {%endfor%}
-                    </div>
-                </div>
-                {%endif%}
-                <!-- 밍크마당 끝 -->
-                <!-- 공지사항 시작 -->
-                {% if notice_index %}
-                <div class=" t-mt-5 t-mr-3 t-pb-5">
-                    <a href="{% url 'board:category' 1 %}"
-                       class="t-text-teal-400 fs-2 t-w-max t-pb-1 hover:t-text-teal-400">공지사항</a>
-                    <div class="t-mt-3 t-border-t t-border-slate-400">
-                        {% for notice in notice_index %}
-                        <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-block t-text-black visited:t-text-slate-300"
-                             href="{% url 'board:detail' notice.board_id notice.id%}">
-                            <span class="  ">{{ notice.subject}}</span>
-                            <span class="t-text-xs t-text-blue-600/75">{{ notice.comment.count}}</span>
-                        </a>
-                        {%endfor%}
-                    </div>
-                </div>
-                {%endif%}
-                <!-- 공지사항 끝 -->
-
-
-            </div>
+            <img src="/media/{{article.img_url}}" class="img-fluid" alt="...">
         </div>
     </div>
 </section>

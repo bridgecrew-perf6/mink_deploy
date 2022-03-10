@@ -604,6 +604,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.75rem;
 }
 
+.t-h-max {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
+}
+
+.t-h-\[40px\] {
+  height: 40px;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -630,6 +640,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-screen {
   width: 100vw;
+}
+
+.t-w-\[40px\] {
+  width: 40px;
 }
 
 .t-max-w-screen-lg {
@@ -682,6 +696,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-rounded-lg {
   border-radius: 0.5rem;
+}
+
+.t-rounded {
+  border-radius: 0.25rem;
 }
 
 .t-border-2 {

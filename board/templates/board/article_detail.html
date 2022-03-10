@@ -4,7 +4,11 @@
 <div class="t-bg-slate-100">
     <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
         <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}
+            {{ img_url }}
         </a></div>
+        {% if img_url %}
+        <img src="{{img_url}}" class="t-ml-2 t-w-[40px] t-h-[40px] t-object-fit">
+        {% endif%}
         <div class="card">
             <div class="card-header">
                 <div class="t-cursor-pointer t-w-fit"
@@ -196,6 +200,8 @@
             },
         });
     })
+
+
 
 
 

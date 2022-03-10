@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # Local App
     'accounts.apps.AccountsConfig',
     'board.apps.BoardConfig',
+    'summernote_support.apps.SummernoteSupportConfig',
 ]
 
 MIDDLEWARE = [

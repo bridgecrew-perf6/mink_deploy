@@ -1,7 +1,7 @@
 import re
 
 from django.db import models
-from django_summernote.models import Attachment, AbstractAttachment
+from django_summernote.models import AbstractAttachment, Attachment
 from django.conf import settings
 from accounts.models import User
 from datetime import datetime, timedelta, timezone
@@ -51,11 +51,23 @@ class Article(models.Model):
         return self.subject
 
     def extract_attachments(self) -> list[AbstractAttachment, ...]:
-        img_urls = re.findall(r'src="(.*?)"', self.body)
+        img_urls = re.findall(r'src="(.*?)"', self.content)
         img_urls = [img_url.replace(settings.MEDIA_URL, '') for img_url in img_urls]
 
-        return Attachment.objects.filter(file__in=img_urls)
+        img_attachment = Attachment.objects.filter(file__in=img_urls)
 
+        return img_attachment
+
+    def img_thumbnail(self):
+        img_root = "/media/"
+        icon_hidden = 'https://user-images.githubusercontent.com/85653591/157589936-bef76f01-c4eb-4378-8c42-f109d4169b9a.png'
+
+        time = datetime.now(tz=timezone.utc) - self.reg_date
+        if time < timedelta(days=7):
+            img_url = self.objects.get.extract_attachments(self).order_by('-id')[:1]
+            return img_root + str(img_url.file)
+        else:
+            return icon_hidden
 
 class Comment(models.Model):
     reg_date = models.DateTimeField('등록날짜', auto_now_add=True)
