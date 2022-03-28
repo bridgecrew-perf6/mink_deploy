@@ -604,6 +604,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 1.75rem;
 }
 
+.t-h-12 {
+  height: 3rem;
+}
+
+.t-h-\[80px\] {
+  height: 80px;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -630,6 +638,14 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 100vw;
 }
 
+.t-w-12 {
+  width: 3rem;
+}
+
+.t-w-\[80px\] {
+  width: 80px;
+}
+
 .t-max-w-screen-lg {
   max-width: 1024px;
 }
@@ -652,6 +668,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-flex-wrap {
   flex-wrap: wrap;
+}
+
+.t-items-center {
+  align-items: center;
 }
 
 .t-justify-end {
@@ -697,6 +717,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-border-slate-400 {
   --tw-border-opacity: 1;
   border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
+.t-border-slate-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
+}
+
+.t-border-slate-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
 }
 
 .t-bg-slate-100 {

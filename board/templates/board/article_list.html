@@ -10,47 +10,47 @@
                 {% if board.id != 1 %}
                 {% if request.user.is_authenticated %}
                 <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
-                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
-                    작성</a>
-            </div>
+                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
+                        작성</a>
+                </div>
                 {%endif%}
                 {%else%}
                 {%if user.is_superuser == 1%}
                 <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
-                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
-                    작성</a>
-            </div>
+                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                        작성</a>
+                </div>
                 {%endif%}
                 {%endif%}
-                 <div class="form-outline t-my-5 t-px-5">
-                <form class="t-flex">
-                    <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
-                           aria-label="Search">
-                    <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
+                <div class="form-outline t-my-5 t-px-5">
+                    <form class="t-flex">
+                        <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
+                               aria-label="Search">
+                        <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
                 {% if article_list %}
-                <div class="t-border-t t-border-slate-400">
+                <div class="t-border-2 t-border-slate-400 ">
                     {% for article in article_list %}
-                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black visited:t-text-slate-300"
-                       href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
-                        <span class="t-w-screen t-break-all">{{article.subject}}</span>
-                        <span class="t-text-xs t-text-blue-600/75">{{ article.comment.count}}</span>
-                        <div class="t-flex t-pt-1">
-                            <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i
-                                    class="far fa-thumbs-up"></i> {{article.voter.count}}</span>
-                            {% if article.created_string == False %}
-                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</td></span>
-                            {% else %}
-                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article.created_string }}</span>
-                            {% endif %}
-                            <span class="t-text-xs t-w-full t-text-right">{{article.writer}}</span>
+                    <div class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-flex ">
+                        <div class="flex">
+                            <img src="{{article.img_thumbnail}}" class="t-w-[80px] t-h-[80px]">
                         </div>
-                    </a>
+                        <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                           class="t-text-black visited:t-text-slate-300z">
+                            {{article.subject}}
+                        </a>
+                        {{ article.comment.count}}
+                        <i class="far fa-thumbs-up"></i> {{article.voter.count}}
+                        {% if article.created_string == False %}
+                        <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}
+                        {% else %}
+                        <i class="far fa-clock"></i> {{ article.created_string }}
+                        {% endif %}
+                        {{article.writer}}
+                    </div>
                     {%endfor%}
                 </div>
                 <ul class="pagination justify-content-center t-mt-5 t-pb-5">
