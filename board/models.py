@@ -62,9 +62,9 @@ class Article(models.Model):
         img_root = "/media/"
         icon_hidden = 'https://user-images.githubusercontent.com/85653591/157589936-bef76f01-c4eb-4378-8c42-f109d4169b9a.png'
 
-        time = datetime.now(tz=timezone.utc) - self.reg_date
-        if time < timedelta(days=7):
-            img_url = self.objects.get.extract_attachments(self).order_by('-id')[:1]
+        img = self.extract_attachments()
+        img_url = img.first()
+        if img_url is not None:
             return img_root + str(img_url.file)
         else:
             return icon_hidden
