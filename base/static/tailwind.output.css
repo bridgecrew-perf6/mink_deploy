@@ -612,6 +612,18 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 80px;
 }
 
+.t-h-\[20px\] {
+  height: 20px;
+}
+
+.t-h-\[35px\] {
+  height: 35px;
+}
+
+.t-h-\[60px\] {
+  height: 60px;
+}
+
 .t-min-h-screen {
   min-height: 100vh;
 }
@@ -644,6 +656,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-w-\[80px\] {
   width: 80px;
+}
+
+.t-w-\[20px\] {
+  width: 20px;
+}
+
+.t-w-\[10px\] {
+  width: 10px;
+}
+
+.t-w-\[500px\] {
+  width: 500px;
+}
+
+.t-w-\[400px\] {
+  width: 400px;
+}
+
+.t-w-\[300px\] {
+  width: 300px;
 }
 
 .t-max-w-screen-lg {
@@ -680,6 +712,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-justify-center {
   justify-content: center;
+}
+
+.t-justify-self-end {
+  justify-self: end;
 }
 
 .t-whitespace-nowrap {
@@ -757,6 +793,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-sky-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
 }
 
 .t-py-5 {
