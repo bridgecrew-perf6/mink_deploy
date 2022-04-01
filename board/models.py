@@ -42,7 +42,7 @@ class Article(models.Model):
             time = datetime.now(tz=timezone.utc).date() - self.reg_date.date()
             return str(time.days) + '일 전'
         else:
-            return False
+            return str(time.days) + '일 전'
 
     def count_voter_user(self):
         return self.voter.count()

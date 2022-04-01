@@ -5,14 +5,11 @@
     <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
         <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}
         </a></div>
-        {% if img_url %}
-        <img src="{{img_url}}" class="t-ml-2 t-w-[40px] t-h-[40px] t-object-fit">
-        {% endif%}
         <div class="card">
             <div class="card-header">
                 <div class="t-cursor-pointer t-w-fit"
                      onclick="location.href='{% url 'board:detail' board.id article.id%}'">
-                    <span class="-t-text-xs">{{article.subject}}</span>
+                    <span class="t-text-2xl t-font-bold">{{article.subject}}</span>
                 </div>
             </div>
             <div class="card-body t-min-h-screen t-flex-wrap">
@@ -24,7 +21,7 @@
                     <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
                 </button>
             </div>
-            <div class="t-ml-2 t-mb-2">{{article.tag}}</div>
+            <div class="t-ml-2 t-mb-2 t-text-blue-400 t-font-bold">{{article.tag}}</div>
             <div class="card-footer text-muted">
                 {{article.reg_date}}
                 {% if request.user.id == article.user.id %}
@@ -83,97 +80,113 @@
     </div>
     <!-- 리스트 -->
     <section class="section-article-list">
-        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
+        <div class="t-bg-slate-100 t-min-h-screen">
+        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col t-p-3">
             <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
-            {% if request.user.is_authenticated %}
-            <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
-                <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
-                    작성</a>
-            </div>
-            {%endif%}
-            <div class="form-outline t-my-5 t-px-5">
-                <form class="t-flex">
-                    <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
-                           aria-label="Search">
-                    <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </form>
-            </div>
-            {% if article_list %}
-            <div class="t-border-t t-border-slate-400">
-                {% for article_ in article_list %}
-                {% if article_.id == article.id %}
-                <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black t-bg-sky-100"
-                   href="{% url 'board:detail' board.id article_.id%}page={{article_list.nunber}}&kw={{request.GET.kw}}">
-                    <span><i class="far fa-hand-point-right t-text-cyan-600"></i></span>
-                    <span class="t-w-screen t-break-all t-text-cyan-600">{{article_.subject}}</span>
-                    {%else%}
-                    <a class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-block t-text-black visited:t-text-slate-300"
-                       href="{% url 'board:detail' board.id article_.id%}">
-                        <span class="t-w-screen t-break-all">{{article_.subject}}</span>
-                        {%endif%}
-                        <span class="t-text-xs t-text-blue-600/75">{{ article_.comment.count}}</span>
-                        <div class="t-flex t-pt-1">
-                        <span class="t-text-blue-600/50 t-text-xs t-pr-2 t-whitespace-nowrap"><i
-                                class="far fa-thumbs-up"></i> {{article_.voter.count}}</span>
-                            {% if article_.created_string == False %}
-                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article_.registered_date|date:'m월 d일' }}</span>
-                            {% else %}
-                            <span class="t-text-xs t-text-slate-400 t-whitespace-nowrap">
-                            <i class="far fa-clock"></i> {{ article_.created_string }}</span>
-                            {% endif %}
-                            <span class="t-text-xs t-w-full t-text-right">{{article_.writer}}</span>
+            <div class="input-group t-pb-6 t-grid">
+                {% if board.id != 1 %}
+                <div class="t-mb-3 t-flex t-justify-end t-h-[35px]">
+                    {% if request.user.is_authenticated %}
+                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
+                        작성</a>
+                    {%endif%}
+                </div>
+                {%else%}
+                {%if user.is_superuser == 1%}
+                <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
+                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
+                        작성</a>
+                </div>
+                {%endif%}
+                {%endif%}
+                <div class="form-outline t-my-5 t-px-5 t-w-[300px] t-flex t-justify-self-end">
+                    <form class="t-flex">
+                        <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
+                               aria-label="Search">
+                        <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+                {% if article_list %}
+                <div class="article_list_box t-border-x t-border-t t-border-slate-200 ">
+                    {% for article in article_list %}
+                    <div class="t-border-b t-border-slate-200 t-w-full t-py-1 t-flex hover:t-bg-slate-100">
+                        <div class="img_box t-m-3 t-h-full t-w-fit ">
+                            <img src="{{article.img_thumbnail}}"
+                                 class="t-w-[80px] t-h-[60px] t-cursor-pointer thumb_img">
                         </div>
-                    </a>
-                </a>
-                {%endfor%}
+                        <div class="article_information t-w-full t-p-3	">
+                            <div class="t-text-green-300">
+                                <a href="{% url 'board:detail' board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                                   class="t-text-black visited:t-text-slate-300 t-text-xl t-font-bold t-mr-4">
+                                    {{article.subject}}
+                                </a>
+                                <span class="t-mr-4">
+                                <i class="fa-regular fa-comment-dots"></i> {{ article.comment.count}}
+                            </span>
+                                <span>
+                                <i class="far fa-thumbs-up"></i> {{article.voter.count}}
+                            </span>
+                            </div>
+                            <div class="t-pt-3 t-flex t-text-gray-400">
+                                <span>
+                                {% if article.created_string == False %}
+                                <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}
+                                {% else %}
+                                <i class="far fa-clock"></i> {{ article.created_string }}
+                                {% endif %}
+                                </span>
+                                <span class="t-grow t-flex t-justify-end">
+                                    <i class="fa-solid fa-user t-pr-3"></i>{{article.writer}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {%endfor%}
+                </div>
+                <ul class="pagination justify-content-center t-mt-5 t-pb-5">
+                    <!-- 이전페이지 -->
+                    {% if article_list.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                    </li>
+                    {% endif %}
+                    <!-- 페이지리스트 -->
+                    {% for page_number in article_list.paginator.page_range %}
+                    {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
+                    {% if page_number == article_list.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <!-- 다음페이지 -->
+                    {% if article_list.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                {%endif%}
             </div>
-            <ul class="pagination justify-content-center t-mt-5 t-pb-5">
-                <!-- 이전페이지 -->
-                {% if article_list.has_previous %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-                </li>
-                {% endif %}
-                <!-- 페이지리스트 -->
-                {% for page_number in article_list.paginator.page_range %}
-                {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
-                {% if page_number == article_list.number %}
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link"
-                       href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{
-                        page_number }}</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="{% url 'board:category' board.id%}?page={{ page_number }}&kw={{request.GET.kw}}">{{
-                        page_number }}</a>
-                </li>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-                <!-- 다음페이지 -->
-                {% if article_list.has_next %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-                </li>
-                {% endif %}
-            </ul>
-            {%endif%}
         </div>
+    </div>
     </section>
 </div>
 

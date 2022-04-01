@@ -4,7 +4,7 @@
 
 <section class="section-article-list">
     <div class="t-bg-slate-100 t-min-h-screen">
-        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col">
+        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col t-p-3">
             <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
             <div class="input-group t-pb-6 t-grid">
                 {% if board.id != 1 %}
@@ -31,28 +31,40 @@
                         </button>
                     </form>
                 </div>
-
-
                 {% if article_list %}
-                <div class="t-border-2 t-border-slate-400 ">
+                <div class="article_list_box t-border-x t-border-t t-border-slate-200 ">
                     {% for article in article_list %}
-                    <div class=" t-border-b t-border-slate-400 t-w-full t-py-1 t-px-4 t-flex ">
-                        <div class="flex">
+                    <div class="t-border-b t-border-slate-200 t-w-full t-py-1 t-flex hover:t-bg-slate-100">
+                        <div class="img_box t-m-3 t-h-full t-w-fit ">
                             <img src="{{article.img_thumbnail}}"
                                  class="t-w-[80px] t-h-[60px] t-cursor-pointer thumb_img">
                         </div>
-                        <a href="{% url 'board:detail' board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                           class="t-text-black visited:t-text-slate-300">
-                            {{article.subject}}
-                        </a>
-                        {{ article.comment.count}}
-                        <i class="far fa-thumbs-up"></i> {{article.voter.count}}
-                        {% if article.created_string == False %}
-                        <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}
-                        {% else %}
-                        <i class="far fa-clock"></i> {{ article.created_string }}
-                        {% endif %}
-                        {{article.writer}}
+                        <div class="article_information t-w-full t-p-3	">
+                            <div class="t-text-green-300">
+                                <a href="{% url 'board:detail' board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                                   class="t-text-black visited:t-text-slate-300 t-text-xl t-font-bold t-mr-4">
+                                    {{article.subject}}
+                                </a>
+                                <span class="t-mr-4">
+                                <i class="fa-regular fa-comment-dots"></i> {{ article.comment.count}}
+                            </span>
+                                <span>
+                                <i class="far fa-thumbs-up"></i> {{article.voter.count}}
+                            </span>
+                            </div>
+                            <div class="t-pt-3 t-flex t-text-gray-400">
+                                <span>
+                                {% if article.created_string == False %}
+                                <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}
+                                {% else %}
+                                <i class="far fa-clock"></i> {{ article.created_string }}
+                                {% endif %}
+                                </span>
+                                <span class="t-grow t-flex t-justify-end">
+                                    <i class="fa-solid fa-user t-pr-3"></i>{{article.writer}}
+                                </span>
+                            </div>
+                        </div>
                     </div>
                     {%endfor%}
                 </div>
