@@ -99,7 +99,7 @@
                 </div>
                 {%endif%}
                 {%endif%}
-                <div class="form-outline t-my-5 t-px-5 t-w-[300px] t-flex t-justify-self-end">
+                <div class="form-outline t-my-5 t-px-5 t-flex t-justify-self-end">
                     <form class="t-flex">
                         <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
                                aria-label="Search">
@@ -109,18 +109,24 @@
                     </form>
                 </div>
                 {% if article_list %}
-                <div class="article_list_box t-border-x t-border-t t-border-slate-200 ">
-                    {% for article in article_list %}
+                <div class="article_list_box t-border-x t-border-t t-border-slate-200 t-w-full">
+                    {% for list_article in article_list %}
+                    {% if list_article.id == article.id %}
+                    <div class="t-border-b t-border-slate-200 t-pl-6 t-w-full t-py-1 t-flex t-bg-slate-100">
+                        {%else%}
                     <div class="t-border-b t-border-slate-200 t-w-full t-py-1 t-flex hover:t-bg-slate-100">
+                        {%endif%}
                         <div class="img_box t-m-3 t-h-full t-w-fit ">
-                            <img src="{{article.img_thumbnail}}"
-                                 class="t-w-[80px] t-h-[60px] t-cursor-pointer thumb_img">
+                            <img src="{{list_article.img_thumbnail}}"
+                                 class="t-w-[70px] t-h-[60px] t-cursor-pointer thumb_img">
                         </div>
-                        <div class="article_information t-w-full t-p-3	">
-                            <div class="t-text-green-300">
+                        <div class="article_information t-p-3 ">
+                            <div class="t-text-green-300 t-w-2/4">
                                 <a href="{% url 'board:detail' board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                                   class="t-text-black visited:t-text-slate-300 t-text-xl t-font-bold t-mr-4">
-                                    {{article.subject}}
+                                   class="t-text-black visited:t-text-slate-300 t-text-lg t-font-bold t-mr-4 ">
+                                    <span class="t-block t-truncate ">
+                                    {{list_article.subject}}
+                                    </span>
                                 </a>
                                 <span class="t-mr-4">
                                 <i class="fa-regular fa-comment-dots"></i> {{ article.comment.count}}
@@ -130,22 +136,22 @@
                             </span>
                             </div>
                             <div class="t-pt-3 t-flex t-text-gray-400">
-                                <span>
+                                <span class="t-text-xs">
                                 {% if article.created_string == False %}
-                                <i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}
+                                <i class="far fa-clock"></i> {{ list_article.registered_date|date:'m월 d일' }}
                                 {% else %}
-                                <i class="far fa-clock"></i> {{ article.created_string }}
+                                <i class="far fa-clock"></i> {{ list_article.created_string }}
                                 {% endif %}
                                 </span>
                                 <span class="t-grow t-flex t-justify-end">
-                                    <i class="fa-solid fa-user t-pr-3"></i>{{article.writer}}
+                                    <i class="fa-solid fa-user t-pr-3"></i>{{list_article.writer}}
                                 </span>
                             </div>
                         </div>
                     </div>
                     {%endfor%}
                 </div>
-                <ul class="pagination justify-content-center t-mt-5 t-pb-5">
+                <ul class="pagination justify-content-center t-mt-5 t-pb-5 t-w-max">
                     <!-- 이전페이지 -->
                     {% if article_list.has_previous %}
                     <li class="page-item">
@@ -159,7 +165,7 @@
                     {% endif %}
                     <!-- 페이지리스트 -->
                     {% for page_number in article_list.paginator.page_range %}
-                    {% if page_number >= article_list.number|add:-5 and page_number <= article_list.number|add:5 %}
+                    {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
                     {% if page_number == article_list.number %}
                     <li class="page-item active" aria-current="page">
                         <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>

@@ -8,12 +8,12 @@
             <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
             <div class="input-group t-pb-6 t-grid">
                 {% if board.id != 1 %}
+                {% if request.user.is_authenticated %}
                 <div class="t-mb-3 t-flex t-justify-end t-h-[35px]">
-                    {% if request.user.is_authenticated %}
                     <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
                         작성</a>
-                    {%endif%}
                 </div>
+                {%endif%}
                 {%else%}
                 {%if user.is_superuser == 1%}
                 <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
