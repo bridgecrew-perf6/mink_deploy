@@ -1,13 +1,35 @@
 {% extends "layout.html" %}
 {% block content%}
 <section class="section-main-index">
-    <div class="t-bg-slate-100 t-min-h-screen">
-        <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-min-h-screen t-m-auto">
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
-            <div class=""></div>
+    <div class="t-p-3 mx-auto container t-flex">
+
+        <div class="swipe-img-box t-border-2 t-border-black t-flex t-basis-1/5 t-p-3">
+            <div class="t-border-2 t-border-black t-flex t-flex-col t-w-full">
+                <a href="{% url 'accounts:login'%}?next={{ request.path }}" class="login btn-primary t-text-center t-h-[30px] t-m-2 t-leading-[30px] t-rounded-md">로그인</a>
+                <hr>
+                <p class="t-text-sm t-m-2">커뮤니티</p>
+                <a href="" class="t-text-center	">밍크마당</a>
+                <hr>
+                <p class="t-text-sm t-m-2">밍크</p>
+                <a href="" class="t-text-center">공지사항</a>
+                <hr>
+            </div>
         </div>
+
+
+        <div class="recentlt-article-list t-border-2 t-border-black t-flex t-basis-4/5 t-p-3">
+            <div class="t-border-2 t-border-black t-flex t-basis-1/2 t-m-3">
+                {% for article in mink_index %}
+                {{ article.subject }}
+                {%endfor%}
+            </div>
+            <div class="t-border-2 t-border-black t-flex t-basis-1/2 t-m-3">
+                {% for article in mink_index %}
+                {{ article.subject }}
+                {%endfor%}
+            </div>
+        </div>
+
     </div>
 </section>
 {% endblock %}
