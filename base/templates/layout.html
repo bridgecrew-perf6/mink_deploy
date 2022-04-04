@@ -24,7 +24,7 @@
     <script defer src="{% static 'common.js' %}"></script>
 
 </head>
-<body class="t-flex t-flex-col t-min-h-screen t-pt-[56px] t-bg-slate-100">
+<body class="t-flex t-flex-col t-min-h-screen t-pt-[56px] t-bg-slate-50">
 {% if messages %}
 {% for message in messages %}
 <div class="alert alert-{{ message.tags }} t-my-[0px]">
@@ -33,13 +33,13 @@
 {% endfor %}
 {% endif %}
 <header>
-    <nav class="navbar navbar-expand-lg fixed-top t-bg-slate-600">
+    <nav class="navbar navbar-expand-lg fixed-top t-bg-orange-300">
         <div class="container">
             <!-- Site Logo Here -->
-            <a class="navbar-brand t-text-pink-300 hover:t-text-yellow-800" href="{%url 'index' %}"><i
-                    class="fas fa-paw"></i> 밍크</a>
+            <a class="navbar-brand" href="{%url 'index' %}"><i
+                    class="fas fa-paw  t-text-pink-300"></i> <span class="t-text-white">밍크</span></a>
             <!-- Mobile Toggle Button -->
-           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileToggle"
+           <button class="navbar-toggler t-bg-orange-200" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMobileToggle"
                     aria-controls="navbarMobileToggle" aria-expanded="false" aria-label="Toggle navigation"><i class="fas fa-caret-down t-text-white"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarMobileToggle">
@@ -48,7 +48,6 @@
                         <a class="nav-link t-w-fit text-decoration-none text-light" aria-current="page"
                            href="{% url 'board:category' 2%}">밍크마당</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link t-w-fit text-decoration-none text-light" aria-current="page"
                            href="{% url 'board:category' 1%}">공지사항</a>
@@ -85,10 +84,32 @@
     </nav>
 </header>
 <section class="t-flex-1 t-flex t-flex-col t-h-fit">
+    <div class="category-box t-border-2 t-border-slate-200 t-flex t-basis-1/5 t-p-3 t-m-2 t-flex t-flex-col t-h-fit t-bg-red-200">
+            <div class="category-box-link t-border-2 t-border-slate-100 t-flex t-flex-col t-w-full t-h-fit t-bg-white">
+                <a href="{% url 'accounts:login'%}?next={{ request.path }}"
+                   class="login btn-primary t-text-center t-h-[40px] t-m-2 t-leading-[40px] t-rounded-md">로그인</a>
+                <hr>
+                <p class="t-text-sm t-m-2 ">커뮤니티</p>
+                <div class="t-w-full t-text-center">
+                    <a href="" class="t-font-bold t-text-lg t-w-fit">밍크마당</a>
+                </div>
+                <hr>
+                <p class="t-text-sm t-m-2">밍크</p>
+                 <div class="t-w-full t-text-center">
+                    <a href="" class="t-font-bold t-text-lg t-w-fit">공지사항</a>
+                </div>
+            </div>
+            <div class="category-box-img-dog t-mt-[40px]">
+                <img src="https://user-images.githubusercontent.com/85653591/161464592-89d33628-386f-41a2-9878-52fb8e36e19b.jpg" alt="">
+            </div>
+            <div class="category-box-img-cat t-mt-[20px]">
+                <img src="https://user-images.githubusercontent.com/85653591/161473294-121f6e1c-2a8b-4dce-bffe-c00dcdfff982.jpg" alt="">
+            </div>
+        </div>
     {%block content%}
     {%endblock%}
 </section>
-<footer class="footer t-bg-slate-100 t-py-5">
+<footer class="footer t-bg-slate-50 t-py-5">
     <div class=" t-text-center">
         <span class="text-muted"><i class="fas fa-paw"></i> 밍크</span>
     </div>
