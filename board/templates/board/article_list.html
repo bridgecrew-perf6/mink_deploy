@@ -2,52 +2,88 @@
 
 {%block content%}
 
-<section class="section-article-list">
-    <div class="mx-auto container">
-<div>
 
-</div>
+<section class="section-article-list" style="background-image:url(https://user-images.githubusercontent.com/85653591/161883541-5978545f-9379-4f16-be32-628f02d4a296.jpg); background-size: contain;">
 
-        <div class="paginator">
-            <ul class="pagination justify-content-center t-mt-5 t-pb-5">
-                <!-- 이전페이지 -->
-                {% if article_list.has_previous %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-                </li>
-                {% endif %}
-                <!-- 페이지리스트 -->
-                {% for page_number in article_list.paginator.page_range %}
-                {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
-                {% if page_number == article_list.number %}
-                <li class="page-item active" aria-current="page">
-                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-                </li>
-                {% else %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-                </li>
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-                <!-- 다음페이지 -->
-                {% if article_list.has_next %}
-                <li class="page-item">
-                    <a class="page-link"
-                       href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
-                </li>
-                {% else %}
-                <li class="page-item disabled">
-                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-                </li>
-                {% endif %}
-            </ul>
+    <div class="t-p-3 mx-auto container t-flex t-mt-[60px]">
+
+        <div class="recently-article-list-mink t-flex t-p-3 t-m-2 t-border-2 t-border-slate-200 t-w-full t-bg-white"
+             style="opacity : 0.9;">
+
+            <div class="recently-article-list-notice t-border-2 t-border-white t-flex  t-flex-col t-w-full">
+                <div class="board-box-mink t-p-3 t-border-2 t-border-slate-200">
+                    <a href="{% url 'board:category' 2%}" class="t-w-fit  t-font-bold t-text-lg">밍크마당</a>
+                </div>
+                <div class="article-list-box-mink">
+                    {% for article in article_list %}
+                    <ul class="t-p-2 hover:t-bg-slate-200 t-border-t-2 t-flex t-border-2 t-border-black">
+                        <li class="t-border-2 t-border-black t-w-full t-mr-auto">
+                            <div class=" t-border-2 t-border-black t-w-3/4 t-truncate">
+                            <a href="" class="t-inline-block t-w-fit ">
+                                    {{article.subject}}
+                            </a>
+                            <span class="t-text-green-300">[{{article.comment.count}}]</span>
+                            </div>
+
+                            <div>
+                            {% if article.created_string == False %}
+                            <span><i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</span>
+                            {% else %}
+                            <span><i class="far fa-clock"></i> {{ article.created_string }} </span>
+                            {% endif %}
+                            <span>{{article.writer}}</span>
+                            </div>
+                        </li>
+                        <li class="t-border-2 t-border-black" >
+                            <img src="{{article.img_thumbnail}}"
+                                 class="t-h-[60px] t-w-[70px] t-cursor-pointer thumb_img">
+                        </li>
+                    </ul>
+                    {%endfor%}
+                </div>
+            </div>
         </div>
     </div>
+    <div class="paginator" style="opacity:0.8;">
+        <ul class="pagination justify-content-center t-mt-5 t-pb-5">
+            <!-- 이전페이지 -->
+            {% if article_list.has_previous %}
+            <li class="page-item">
+                <a class="page-link"
+                   href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+            </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in article_list.paginator.page_range %}
+            {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
+            {% if page_number == article_list.number %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+            </li>
+            {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if article_list.has_next %}
+            <li class="page-item">
+                <a class="page-link"
+                   href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
 </section>
 {%endblock%}

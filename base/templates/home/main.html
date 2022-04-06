@@ -1,20 +1,31 @@
 {% extends "layout.html" %}
 {% block content%}
-<section class="section-main-index">
+<section class="section-main-index t-h-screen" style="background-image:url(https://user-images.githubusercontent.com/85653591/161883541-5978545f-9379-4f16-be32-628f02d4a296.jpg);">
+
     <div class="t-p-3 mx-auto container t-flex t-mt-[60px]">
 
-        <div class="recentlt-article-list-mink  t-flex t-basis-4/5 t-p-3 t-m-2 t-bg-orange-100 t-h-fit t-grid t-grid-cols-1 md:t-grid-cols-2">
+        <div class="recently-article-list-mink t-flex t-p-3 t-m-2 t-grid t-grid-cols-1 md:t-grid-cols-2 t-border-2 t-border-slate-200 t-w-full t-bg-white" style="opacity : 0.9;">
 
-            <div class="recentlt-article-list-notice t-border-2 t-border-slate-200 t-flex t-basis-1/2 t-m-3 t-flex-col">
+            <div class="recently-article-list-notice t-border-2 t-border-white t-flex t-basis-1/2 t-m-3 t-flex-col">
                 <div class="board-box-notice t-p-3">
                     <a href="{% url 'board:category' 2%}" class="t-w-fit  t-font-bold t-text-lg">밍크마당</a>
                 </div>
                 <div class="article-list-box-mink ">
                     {% for article in mink_index %}
-                    <div class=" t-w-full  t-p-2 t-flex-col hover:t-bg-slate-200 t-border-t-2 t-border-slate-200">
-                        <a href="{% url 'board:detail' article.board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                           class="t-w-fit t-text-lg">{{ article.subject }}</a>
-                        <span class="t-text-gray-400 t-text-sm">{{article.voter.count}}</span>
+                    <div class="t-w-full t-p-2 hover:t-bg-slate-200 t-border-t-2 t-flex">
+
+                        <div>
+                            <a href="{% url 'board:detail' article.board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                               class=" t-w-fit t-text-lg ">{{ article.subject }}
+
+                            </a>
+                            <span class=" t-text-gray-400 t-text-sm  t-w-fit"> {{ article.voter.count}}</span>
+                        </div>
+
+                        <div class="t-flex t-justify-end t-grow">
+                            <img src="{{article.img_thumbnail}}"
+                                 class=" t-h-[60px] t-w-[70px] t-cursor-pointer thumb_img">
+                        </div>
                     </div>
                     {%endfor%}
                 </div>
@@ -25,7 +36,7 @@
                     <a href="{% url 'board:category' 1%}" class="t-w-fit  t-font-bold t-text-lg">공지사항</a>
                 </div>
                 <div class="article-list-box-mink ">
-                    {% for article in mink_index %}
+                    {% for article in notice_index %}
                     <div class=" t-w-full  t-p-2 t-flex-col hover:t-bg-slate-200 t-border-t-2 t-border-slate-200">
                         <a href="{% url 'board:detail' article.board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
                            class="t-w-fit t-text-lg">{{ article.subject }}</a>
@@ -34,7 +45,6 @@
                     {%endfor%}
                 </div>
             </div>
-
         </div>
 
     </div>

@@ -11,11 +11,11 @@ def index(request: HttpRequest):
 
 
     notice_index = Article.objects.filter(board=1).order_by('-id')
-    paginator = Paginator(notice_index, 10)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(notice_index, 5)  # 페이지당 5개씩 보여주기
     notice_index_page_obj = paginator.get_page(page)
 
     mink_index = Article.objects.filter(board=2).order_by('-id')
-    paginator = Paginator(mink_index, 10)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(mink_index, 5)  # 페이지당 5개씩 보여주기
     mink_index_page_obj = paginator.get_page(page)
 
     context = {'notice_index': notice_index_page_obj,
