@@ -29,11 +29,14 @@ def article_list(request: HttpRequest, board_id):
         article_list = Article.objects.filter(board=board.id, ).filter(
             Q(tag__icontains=kw) | Q(subject__icontains=kw) | Q(content__icontains=kw)).order_by('-id')
 
-    paginator = Paginator(article_list, 20)  # 페이지당 10개씩 보여주기
+    paginator = Paginator(article_list, 10)  # 페이지당 10개씩 보여주기
     page_obj = paginator.get_page(page)
+
+    best_articles = Article.objects.filter(board=board.id).order_by('-id')[:10]
 
     context = {'article_list': page_obj,
                'board': board,
+               'best_articles': best_articles,
                }
     return render(request, 'board/article_list.html', context)
 

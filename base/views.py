@@ -5,22 +5,12 @@ from board.models import Board, Article
 
 
 def index(request: HttpRequest):
-    board = Board.objects.all()
-    page = request.GET.get('page', '1')  # 페이지
 
+    article_list = Article.objects.filter(board=2).order_by('-id')[:10]
 
+    context = {
+        'article_list': article_list,
 
-    notice_index = Article.objects.filter(board=1).order_by('-id')
-    paginator = Paginator(notice_index, 5)  # 페이지당 5개씩 보여주기
-    notice_index_page_obj = paginator.get_page(page)
+    }
 
-    mink_index = Article.objects.filter(board=2).order_by('-id')
-    paginator = Paginator(mink_index, 5)  # 페이지당 5개씩 보여주기
-    mink_index_page_obj = paginator.get_page(page)
-
-    context = {'notice_index': notice_index_page_obj,
-               'mink_index': mink_index_page_obj,
-               'board': board,
-               }
     return render(request, "home/main.html", context)
-

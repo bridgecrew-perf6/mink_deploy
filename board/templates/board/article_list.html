@@ -3,87 +3,115 @@
 {%block content%}
 
 
-<section class="section-article-list" style="background-image:url(https://user-images.githubusercontent.com/85653591/161883541-5978545f-9379-4f16-be32-628f02d4a296.jpg); background-size: contain;">
+<section class="section-article-list t-bg-repeat sm:t-h-screen"
+         style="background-image:url(https://user-images.githubusercontent.com/85653591/161883541-5978545f-9379-4f16-be32-628f02d4a296.jpg); background-size: contain;">
+    {%if board.id == 1 %}
+    <div class="t-mx-auto t-container t-flex t-mt-[60px] t-p-2">
+        <div class="article-best-list t-basis-2/3 sm:t-block t-hidden t-mr-1">
+            <div class=" t-h-full t-border-2 t-border-slate-200 t-bg-slate-100 t-opacity-90 t-p-10 t-w-full t-border-2 t-border-black ">
 
-    <div class="t-p-3 mx-auto container t-flex t-mt-[60px]">
-
-        <div class="recently-article-list-mink t-flex t-p-3 t-m-2 t-border-2 t-border-slate-200 t-w-full t-bg-white"
-             style="opacity : 0.9;">
-
-            <div class="recently-article-list-notice t-border-2 t-border-white t-flex  t-flex-col t-w-full">
-                <div class="board-box-mink t-p-3 t-border-2 t-border-slate-200">
-                    <a href="{% url 'board:category' 2%}" class="t-w-fit  t-font-bold t-text-lg">밍크마당</a>
+                <p class="t-inline-block t-mt-[25%] t-text-6xl t-w-full t-text-center ">
+                    <span class="">
+                    <i class="fa-solid fa-paw t-text-9xl"></i>
+                </span>공지사항입니다.
+                </p>
+            </div>
+        </div>
+    {%else%}
+    <div class="t-mx-auto t-container t-flex t-mt-[60px]  t-p-2">
+        <div class="article-best-list t-basis-2/3 sm:t-block t-hidden t-mr-1">
+            <div class="t-flex-row t-flex t-h-full t-border-y-2 t-border-slate-200 t-flex-wrap">
+                {% for article in article_list %}
+                {% if forloop.last %}
+                <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-x-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
+                     style="background-image:url({{article.img_thumbnail}});">
+                    <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
+                        <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
+                            {{article.subject}}
+                        </a>
+                    </div>
                 </div>
-                <div class="article-list-box-mink">
-                    {% for article in article_list %}
-                    <ul class="t-p-2 hover:t-bg-slate-200 t-border-t-2 t-flex t-border-2 t-border-black">
-                        <li class="t-border-2 t-border-black t-w-full t-mr-auto">
-                            <div class=" t-border-2 t-border-black t-w-3/4 t-truncate">
-                            <a href="" class="t-inline-block t-w-fit ">
-                                    {{article.subject}}
-                            </a>
-                            <span class="t-text-green-300">[{{article.comment.count}}]</span>
-                            </div>
-
-                            <div>
-                            {% if article.created_string == False %}
-                            <span><i class="far fa-clock"></i> {{ article.registered_date|date:'m월 d일' }}</span>
-                            {% else %}
-                            <span><i class="far fa-clock"></i> {{ article.created_string }} </span>
-                            {% endif %}
-                            <span>{{article.writer}}</span>
-                            </div>
-                        </li>
-                        <li class="t-border-2 t-border-black" >
-                            <img src="{{article.img_thumbnail}}"
-                                 class="t-h-[60px] t-w-[70px] t-cursor-pointer thumb_img">
-                        </li>
-                    </ul>
-                    {%endfor%}
+                {%else%}
+                <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-l-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
+                     style="background-image:url({{article.img_thumbnail}});">
+                    <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
+                        <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
+                            {{article.subject}}
+                        </a>
+                    </div>
                 </div>
+                {%endif%}
+                {%endfor%}
+            </div>
+        </div>
+    {%endif%}
+
+
+        <div class="article-list-box t-border-2 t-border-slate-300 t-mx-auto sm:t-basis-1/3 t-bg-slate-50 t-opacity-90 t-p-1">
+            {% for article in article_list %}
+            <div class="t-border-2 t-border-slate-200 t-p-1 t-m-1 hover:t-bg-slate-300">
+                <div class="">
+                    <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}" class="">
+                        {{article.subject }}
+                    </a>
+                    <span class="t-text-green-300">[{{article.comment.count}}]</span>
+                </div>
+                <div class="t-text-sm  t-w-fit">
+                    |
+                    {% if article.created_string == False %}
+                    <span class="t-text-slate-500">{{ article.registered_date|date:'m월 d일' }}</span>
+                    {% else %}
+                    <span class="t-text-slate-500">{{ article.created_string }} </span>
+                    {% endif %}
+                    |
+                    <span class="t-text-slate-500">{{article.writer}}</span>
+                    |
+                </div>
+            </div>
+            {%endfor%}
+            <div class="paginator t-opacity-80 t-mt-[50px]">
+                <ul class="pagination justify-content-center t-mt-5 t-pb-5">
+                    <!-- 이전페이지 -->
+                    {% if article_list.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                    </li>
+                    {% endif %}
+                    <!-- 페이지리스트 -->
+                    {% for page_number in article_list.paginator.page_range %}
+                    {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
+                    {% if page_number == article_list.number %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                    </li>
+                    {% endif %}
+                    {% endif %}
+                    {% endfor %}
+                    <!-- 다음페이지 -->
+                    {% if article_list.has_next %}
+                    <li class="page-item">
+                        <a class="page-link"
+                           href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                    </li>
+                    {% endif %}
+                </ul>
             </div>
         </div>
     </div>
-    <div class="paginator" style="opacity:0.8;">
-        <ul class="pagination justify-content-center t-mt-5 t-pb-5">
-            <!-- 이전페이지 -->
-            {% if article_list.has_previous %}
-            <li class="page-item">
-                <a class="page-link"
-                   href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-            </li>
-            {% endif %}
-            <!-- 페이지리스트 -->
-            {% for page_number in article_list.paginator.page_range %}
-            {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
-            {% if page_number == article_list.number %}
-            <li class="page-item active" aria-current="page">
-                <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-            </li>
-            {% else %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-            </li>
-            {% endif %}
-            {% endif %}
-            {% endfor %}
-            <!-- 다음페이지 -->
-            {% if article_list.has_next %}
-            <li class="page-item">
-                <a class="page-link"
-                   href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
-            </li>
-            {% else %}
-            <li class="page-item disabled">
-                <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-            </li>
-            {% endif %}
-        </ul>
-    </div>
+
 
 </section>
 {%endblock%}

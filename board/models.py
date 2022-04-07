@@ -69,6 +69,7 @@ class Article(models.Model):
         else:
             return icon_hidden
 
+
 class Comment(models.Model):
     reg_date = models.DateTimeField('등록날짜', auto_now_add=True)
     update_date = models.DateTimeField('수정날짜', auto_now=True)
@@ -96,5 +97,3 @@ class Comment(models.Model):
             return str(time.days) + '일 전'
         else:
             return False
-
-
