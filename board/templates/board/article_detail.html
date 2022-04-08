@@ -1,202 +1,223 @@
 {% extends "layout.html" %}
 
 {%block content%}
-<div class="t-bg-slate-100">
-    <div class="t-bg-white t-pl-6 t-pr-6 t-pt-6 t-max-w-screen-lg t-m-auto">
-        <div class="t-my-5"><a href="/board/{{board.id}}/" class="fs-1">{{board.name}}
-        </a></div>
-        <div class="card">
-            <div class="card-header">
-                <div class="t-cursor-pointer t-w-fit"
-                     onclick="location.href='{% url 'board:detail' board.id article.id%}'">
-                    <span class="t-text-xl t-font-bold">{{article.subject}}</span>
+<div class="popup-background t-fixed t-bg-black t-h-full t-w-full t-opacity-20 active"></div>
+<div class="search-box-form form-outline t-fixed t-inset-0 t-flex t-items-center t-justify-center">
+    <div class="search-box-content bg-white border-black border-2 max-h-full flex flex-col t-p-4">
+        <div class="popup-head t-mb-[30px] t-flex t-justify-between ">
+            <span class="t-pt-2">검색</span>
+            <button class="btn-popup-close"><i class="fas fa-times t-text-2xl"></i></button>
+        </div>
+        <div class="popup-body">
+            <form class="">
+                <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
+                       aria-label="Search">
+                <div class="btns t-flex t-justify-end  t-my-4">
+                    <button class="hover:t-bg-blue-200 t-p-2 t-rounded" type="submit"
+                            onclick="location.href='{% url 'board:category' board.id %}'">
+                        검색
+                    </button>
+                    <span class="btn-popup-close t-cursor-pointer hover:t-bg-blue-200 t-p-2 t-rounded t-h-fit t-mx-2">
+                        취소
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="background t-bg-slate-100">
+    <div class="t-mx-auto t-container t-max-w-screen-lg t-bg-white t-p-4">
+
+        <!-- 본문 -->
+        <div class="article-box">
+            <div class="head sm:t-mt-8 t-mt-2">
+                <div class="board-link-box t-w-fit">
+                    <a href="{% url 'board:category' board.id %}"
+                       class="t-text-orange-300 t-text-2xl t-font-bold hover:t-text-blue-400"><i
+                            class="fas fa-paw"></i> <span>{{board.name }}</span>
+                    </a>
+                </div>
+                <div class="subject-box t-mt-[60px]">
+                    <a href="{% url 'board:detail' board.id article.id%}"
+                       class="t-text-slate-600 hover:t-text-slate-400 t-text-xl t-font-bold">
+                        {{article.subject}} </a>
                 </div>
             </div>
-            <div class="card-body t-min-h-screen t-flex-wrap">
-                <p class="card-text t-text-left">{{article.content|safe}}</p>
-            </div>
-            <div class="t-w-full t-flex t-justify-center t-mb-5">
-                <button class=" t-m-auto t-mt-6 btn btn-primary like" name="{{article.id}}"><i class="far fa-thumbs-up"
-                                                                                               style="display:inline;"></i>
-                    <p id="count-{{ article.id }}" style="display:inline;">{{ article.voter.all.count }}</p>
-                </button>
-            </div>
-            <div class="t-ml-2 t-mb-2 t-text-blue-400 t-font-bold">{{article.tag}}</div>
-            <div class="card-footer text-muted">
-                {{article.reg_date}}
-                {% if request.user.id == article.user.id %}
-                <div>
-                    <a href="{% url 'board:modify' article.id %}" class="btn btn-outline-primary t-mr-1">수정</a>
-                    <a href="{% url 'board:delete' article.id %}" class="btn btn-warning"
-                       onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false">삭제</a>
+            <div class="body t-mt-2 t-border-y-2 t-border-slate-500">
+                <div class="body-head t-bg-blue-100">
+                    <div class="t-flex t-p-[5px]">
+                        <div class="writer-nickname-box">
+                            <p><i class="fa-solid fa-user"></i> {{article.writer}}</p>
+                        </div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <div class="article-regdate-box t-pt-[2px]">
+                            <p class="t-text-sm t-text-slate-400">
+                                <i class="fa-regular fa-clock"></i>
+                                {% if article.created_string == False %}
+                                {{ article.created|date:'m월 d일' }}
+                                {% else %}
+                                {{ article.created_string }}
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                {%endif%}
+
+                <div class="body-content t-mt-[60px]">
+                    <div class="content-box">
+                        {{article.content|safe}}
+                    </div>
+                    <div class="voter-box t-flex t-justify-center t-mb-[60px]">
+                        <button class="btn btn-primary like t-flex" name="{{article.id}}"><i
+                                class="far fa-thumbs-up t-pt-[1px]"></i>
+                            <p id="count-{{ article.id }}" class="t-ml-[4px]">{{ article.voter.all.count }}</p>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="t-mt-3 t-mb-6">전체 댓글
+        <!-- 본문 끝 -->
+
+        <!-- 댓글 -->
+        <div class="comment-box">
+            <div class="comment-head-box t-my-2">
+                <i class="fa-regular fa-comments"></i>
+                <span class="t-text-xl t-text-slate-600">
+                전체 댓글
             {% if article.comment.count > 0 %}
-            <span class="text-danger small ml-2">{{ article.comment.count }}</span> 개
+            {{ article.comment.count }}개
             {%else%}
-            <span class="t-text-slate-400">0</span>개
+            0개
             {% endif %}
-        </div>
-        <div class="container">
-            {% for comment_ in comment %}
-            <div class="t-bg-slate-300 t-rounded-lg t-px-3 t-h-7 t-leading-8 t-mt-5 t-flex">
-                <span>{{comment_.user.username}}</span>
-                <span class="t-w-full t-text-right t-text-sm t-leading-8">
+            </span>
+            </div>
+
+            <div class="comment-list-box ">
+                {% for comment_ in comment %}
+                <div class=" t-p-1 t-bg-slate-200 t-rounded t-border-2 t-border-slate-200">
+                    <p class="comment-list-content t-flex t-items-center t-leading-8 t-justify-between">
+                        <span class="comment-writer t-text-sm ">
+                    <span>
+                        {%if article.user_id == comment_.user_id%}
+                        <i class="fa-solid fa-user"></i>
+                        {%else%}
+                        <i class="fa-regular fa-user"></i>
+                        {%endif%}
+                    </span>
+                    <span>{{comment_.user.username}}</span>
+                </span>
+                        <span class="comment-regdate t-text-sm t-text-slate-400 ">
                 <!-- 날짜 -->
+                    <i class="fa-regular fa-clock"></i>
                 {% if comment_.created_string == False %}
                 {{ comment_.created|date:'m월 d일' }}
                 {% else %}
                 {{ comment_.created_string }}
                 {% endif %}
-                    <!-- 댓글 삭제 아이콘 -->
-                {% if request.user.id == comment_.user.id %}
-                <a href="{% url 'board:comment_delete' board.id article.id comment_.id %}"
-                   onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false" style="display:inline;"><i
-                        class="fas fa-trash-alt"></i></a>
-                {%endif%}
-                </span>
-            </div>
-            <div class="t-mt-2 t-px-3">
-                <span>{{comment_.content}}</span>
-            </div>
-            {%endfor%}
-        </div>
-        <div>
-            <form method="post" action="{% url 'board:comment_write' board.id article.id%}">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="content"></label>
-                    <textarea class="form-control" name="content"
-                              id="content" rows="4"
-                              placeholder="내용을 입력하세요." required>{{ form.content.value|default_if_none:'' }}</textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-primary t-my-10">등록
-                </button>
-            </form>
-        </div>
-    </div>
-    <!-- 리스트 -->
-    <section class="section-article-list">
-        <div class="t-bg-slate-100 t-min-h-screen">
-        <div class="t-bg-white t-pt-6 t-max-w-screen-lg t-m-auto t-flex t-flex-col t-p-3">
-            <div class="t-mb-3"><a href="/board/{{board.id}}/" class="fs-1 t-pl-3">{{board.name}}</a></div>
-            <div class="input-group t-pb-6 t-grid">
-                {% if board.id != 1 %}
-                <div class="t-mb-3 t-flex t-justify-end t-h-[35px]">
-                    {% if request.user.is_authenticated %}
-                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary t-mr-2">글
-                        작성</a>
-                    {%endif%}
-                </div>
-                {%else%}
-                {%if user.is_superuser == 1%}
-                <div class="t-g-col-4 t-mb-3 t-flex t-justify-end">
-                    <a href=" {% url 'board:write' board.id%}" class="btn btn-outline-primary">글
-                        작성</a>
-                </div>
-                {%endif%}
-                {%endif%}
-                <div class="form-outline t-my-5 t-px-5 t-flex t-justify-self-end">
-                    <form class="t-flex">
-                        <input class="form-control me-2" type="search" name="kw" placeholder="검색어를 입력해주세요."
-                               aria-label="Search">
-                        <button class="btn btn-outline-success t-whitespace-nowrap search" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                {% if article_list %}
-                <div class="article_list_box t-border-x t-border-t t-border-slate-200 t-w-full">
-                    {% for list_article in article_list %}
-                    {% if list_article.id == article.id %}
-                    <div class="t-border-b t-border-slate-200 t-pl-6 t-w-full t-py-1 t-flex t-bg-slate-100">
-                        {%else%}
-                    <div class="t-border-b t-border-slate-200 t-w-full t-py-1 t-flex hover:t-bg-slate-100">
+                            <!-- 댓글 삭제 아이콘 -->
+                        {% if request.user.id == comment_.user.id %}
+                        <a href="{% url 'board:comment_delete' board.id article.id comment_.id %}"
+                           onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false"
+                           class="t-bg-red-300 t-border-2 t-border-red-300 t-rounded-md t-px-1">
+                            <span class="t-text-red-600">삭제</span>
+                        </a>
                         {%endif%}
-                        <div class="img_box t-m-3 t-h-full t-w-fit ">
-                            <img src="{{list_article.img_thumbnail}}"
-                                 class="t-w-[70px] t-h-[60px] t-cursor-pointer thumb_img">
-                        </div>
-                        <div class="article_information t-p-3 ">
-                            <div class="t-text-green-300 t-w-2/4">
-                                <a href="{% url 'board:detail' board.id article.id %}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                                   class="t-text-black visited:t-text-slate-300 t-text-lg t-font-bold t-mr-4 ">
-                                    <span class="t-block t-truncate ">
-                                    {{list_article.subject}}
-                                    </span>
-                                </a>
-                                <span class="t-mr-4">
-                                <i class="fa-regular fa-comment-dots"></i> {{ article.comment.count}}
-                            </span>
-                                <span>
-                                <i class="far fa-thumbs-up"></i> {{article.voter.count}}
-                            </span>
-                            </div>
-                            <div class="t-pt-3 t-flex t-text-gray-400">
-                                <span class="t-text-xs">
-                                {% if article.created_string == False %}
-                                <i class="far fa-clock"></i> {{ list_article.registered_date|date:'m월 d일' }}
-                                {% else %}
-                                <i class="far fa-clock"></i> {{ list_article.created_string }}
-                                {% endif %}
-                                </span>
-                                <span class="t-grow t-flex t-justify-end">
-                                    <i class="fa-solid fa-user t-pr-3"></i>{{list_article.writer}}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    {%endfor%}
+                            <!-- 댓글 삭제 아이콘 끝 -->
+                </span>
+                    </p>
                 </div>
-                <ul class="pagination justify-content-center t-mt-5 t-pb-5 t-w-max">
-                    <!-- 이전페이지 -->
-                    {% if article_list.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-                    </li>
-                    {% endif %}
-                    <!-- 페이지리스트 -->
-                    {% for page_number in article_list.paginator.page_range %}
-                    {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
-                    {% if page_number == article_list.number %}
-                    <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
-                    </li>
-                    {% endif %}
-                    {% endif %}
-                    {% endfor %}
-                    <!-- 다음페이지 -->
-                    {% if article_list.has_next %}
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
-                    </li>
-                    {% else %}
-                    <li class="page-item disabled">
-                        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-                    </li>
-                    {% endif %}
-                </ul>
-                {%endif%}
+                <div class="comment-content-box t-bg-slate-100 t-mb-[40px] t-p-2">
+                    <span>{{comment_.content}}</span>
+                </div>
+                {%endfor%}
+            </div>
+
+            <div class="comment-write-box">
+                <form method="post" action="{% url 'board:comment_write' board.id article.id%}">
+                    {% csrf_token %}
+                    <div class="form-group t-flex t-flex-col">
+                        <label for="content"></label>
+                        <textarea class="form-control " name="content"
+                                  id="content" rows="4"
+                                  placeholder="내용을 입력하세요."
+                                  required>{{ form.content.value|default_if_none:'' }}</textarea>
+                        <button type="submit" class="btn btn-outline-primary t-my-2 t-self-end">등록</button>
+                    </div>
+
+                </form>
             </div>
         </div>
-    </div>
-    </section>
-</div>
 
-<script type="text/javascript">
+        <!-- 댓글 끝 -->
+        <!-- 리스트 -->
+        <div class="article-list-box">
+            <div class="article-list-head t-border-2 t-border-black">
+                <div class="article-list-board-link t-border-2 t-border-black">
+                    <a href="{% url 'board:category' board.id %}"
+                       class="t-text-orange-300 t-text-2xl t-font-bold hover:t-text-blue-400"><i
+                            class="fas fa-paw"></i> <span>{{board.name }}</span>
+                    </a>
+                </div>
+                <button class="btn-open-search-form-box">
+                    <i class="fas fa-search t-text-slate-600 t-text-xl"></i>
+                </button>
+            </div>
+
+            {% if article_list %}
+
+            {%else%}
+            <span>
+            게시글이 없습니다 ㅠ . ㅠ
+        </span>
+            {%endif%}
+        </div>
+        <!-- 리스트 끝-->
+
+        <!-- 페이지 -->
+        <div class="paginator t-opacity-80 t-my-[30px]">
+            <ul class="pagination justify-content-center t-mt-5 t-pb-5">
+                <!-- 이전페이지 -->
+                {% if article_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page={{ article_list.previous_page_number }}&kw={{request.GET.kw}}">이전</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+                {% endif %}
+                <!-- 페이지리스트 -->
+                {% for page_number in article_list.paginator.page_range %}
+                {% if page_number >= article_list.number|add:-3 and page_number <= article_list.number|add:3 %}
+                {% if page_number == article_list.number %}
+                <li class="page-item active" aria-current="page">
+                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ page_number }}&kw={{request.GET.kw}}">{{ page_number }}</a>
+                </li>
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+                <!-- 다음페이지 -->
+                {% if article_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="?page={{ article_list.next_page_number }}&kw={{request.GET.kw}}">다음</a>
+                </li>
+                {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- 페이지 끝 -->
+
+        <script type="text/javascript">
     $(".like").click(function () { // .like 버튼을 클릭 감지
         var pk = $(this).attr('name')
         $.ajax({ // ajax로 서버와 통신
@@ -214,7 +235,6 @@
                 {%else%}
                 alert("본인이 작성한 글은 추천할 수 없습니다.")
                 {%endif%}
-
             },
         });
     })
@@ -222,8 +242,7 @@
 
 
 
-
-
-</script>
+        </script>
+    </div>
 </div>
 {% endblock%}

@@ -27,6 +27,7 @@
     <!-- common.js -->
     <script defer src="{% static 'common.js' %}"></script>
 
+    <link rel="shortcut icon" href="https://user-images.githubusercontent.com/85653591/162341727-cf25d79d-de4a-4c34-a83c-62545cd60cea.png">
 </head>
 <body class="t-flex t-flex-col t-min-h-screen t-pt-[56px] t-bg-slate-50">
 {% if messages %}
@@ -41,7 +42,7 @@
         <div class="container">
             <!-- Site Logo Here -->
             <a class="navbar-brand" href="{%url 'index' %}"><i
-                    class="fas fa-paw  t-text-pink-300"></i> <span class="t-text-white">밍크</span></a>
+                    class="t-text-orange-600 fas fa-paw"></i> <span class="t-text-white">밍크</span></a>
             <!-- Mobile Toggle Button -->
             <button class="navbar-toggler t-bg-orange-200" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarMobileToggle"
@@ -92,7 +93,7 @@
 </header>
 {%block content%}
 {%endblock%}
-<footer class="t-bg-orange-300 t-flex t-mt-auto t-h-[50px]">
+<footer class="t-bg-orange-200 t-flex t-mt-auto t-h-[50px]">
     <span class="t-m-auto"><i class="fas fa-paw"></i> 밍크</span>
 </footer>
 </body>
