@@ -1,8 +1,8 @@
 {% extends "layout.html" %}
 
 {%block content%}
-<div class="popup-background t-fixed t-bg-black t-h-full t-w-full t-opacity-20 active"></div>
-<div class="search-box-form form-outline t-fixed t-inset-0 t-flex t-items-center t-justify-center">
+<div class="popup-background t-fixed t-bg-black t-h-full t-w-full t-opacity-20 t-hidden"></div>
+<div class="search-box-form form-outline t-fixed t-inset-0 t-flex t-items-center t-justify-center t-hidden">
     <div class="search-box-content bg-white border-black border-2 max-h-full flex flex-col t-p-4">
         <div class="popup-head t-mb-[30px] t-flex t-justify-between ">
             <span class="t-pt-2">검색</span>
@@ -28,7 +28,7 @@
 
 <div class="background t-bg-slate-100">
     <div class="t-mx-auto t-container t-max-w-screen-lg t-bg-white t-p-4">
-
+<p class="t-text-2xl">{{article.img_thumbnail}}</p>
         <!-- 본문 -->
         <div class="article-box">
             <div class="head sm:t-mt-8 t-mt-2">

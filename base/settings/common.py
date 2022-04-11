@@ -160,8 +160,9 @@ SUMMERNOTE_CONFIG = {
         'width': '100%',
         'height': '500',
         'lang': 'ko-KR',
+    },
+    'attachment_filesize_limit': 8 * 1024 * 1024,
 
-    }
 }
 
 CSRF_TRUSTED_ORIGINS = ['https://mink.ming99.site']

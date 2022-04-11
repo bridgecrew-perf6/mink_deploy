@@ -54,18 +54,20 @@ class Article(models.Model):
         img_urls = re.findall(r'src="(.*?)"', self.content)
         img_urls = [img_url.replace(settings.MEDIA_URL, '') for img_url in img_urls]
 
-        img_attachment = Attachment.objects.filter(file__in=img_urls)
 
-        return img_attachment
+        return img_urls
 
     def img_thumbnail(self):
         img_root = "/media/"
         icon_hidden = 'https://user-images.githubusercontent.com/85653591/157589936-bef76f01-c4eb-4378-8c42-f109d4169b9a.png'
 
         img = self.extract_attachments()
-        img_url = img.first()
+        img_url = img[0]
+
         if img_url is not None:
-            return img_root + str(img_url.file)
+            if 'django-summernote' in img_url:
+                return img_root + img_url
+            return img_url
         else:
             return icon_hidden
 

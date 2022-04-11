@@ -13,12 +13,12 @@ def gen_data(app, schema_editor):
     board.save()
     for id in range(1, 120):
         subject = f"공지사항 입니다.{id}"
-        content = f"좋은 아침입니다.{id}"
+        content = f"...{id}"
         user = User.objects.get(id=1)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     for id in range(1, 120):
         subject = f"공지사항 필독{id}"
-        content = f"맛있게 먹었습니다..{id}"
+        content = f"..{id}"
         user = User.objects.get(id=2)
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     # 공지사항 테스트 데이터 끝
@@ -33,7 +33,7 @@ def gen_data(app, schema_editor):
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()
     for id in range(1, 120):
         subject = f"강아지 보고가세요{id}"
-        content = f"정말 귀엽죠?{id}"
+        content = f"<img src=\"https://user-images.githubusercontent.com/85653591/162648133-efe02055-8bdb-412b-9e0b-01c67e08a8fe.jpg\" style=\"width: 1274px;\">정말 귀엽죠?{id}"
         user = User.objects.get(id=1)
 
         Article(board_id=board.id, user=user, subject=subject, content=content, writer=user.username).save()

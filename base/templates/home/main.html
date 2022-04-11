@@ -11,7 +11,8 @@
                     <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-x-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat t-overflow-hidden t-bg-contain	"
                          style="background-image:url({{article.img_thumbnail}});">
                         <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
-                            <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
+                            <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                            class="hover:t-text-blue-300">
                                 {{article.subject}}
                             </a>
                         </div>
@@ -20,7 +21,8 @@
                     <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-l-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
                          style="background-image:url({{article.img_thumbnail}});">
                         <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
-                            <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}">
+                            <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                            class="hover:t-text-blue-300">
                                 {{article.subject}}
                             </a>
                         </div>
@@ -33,7 +35,8 @@
                 {% for article in article_list %}
                 {% if forloop.first %}
                 <div class="t-border-2 t-border-slate-200 t-p-1 t-m-1">
-                    <a href="{% url 'index' %}" class="t-text-orange-300 t-text-2xl"><i class="fas fa-paw"></i></a>
+                    <a href="{% url 'index' %}" class="t-text-orange-300 t-text-2xl"><i class="fas fa-paw
+hover:t-text-blue-300"></i></a>
                 </div>
                 {%endif%}
                 <div class="t-border-2 t-border-slate-200 t-p-1 t-m-1 hover:t-bg-slate-300">

@@ -10,7 +10,7 @@ def gen_master(apps, schema_editor):
     User.objects.create_superuser(username="admin", password="admin", name="관리자", email="",
                                   gender=User.GenderChoices.FEMALE)
 
-    for id in range(2, 6):
+    for id in range(1, 6):
         username = f"user{id}"
         password = f"user{id}"
         name = f"이름{id}"

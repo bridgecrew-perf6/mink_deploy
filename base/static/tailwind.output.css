@@ -1097,6 +1097,16 @@ html > body {
   color: rgb(133 77 14 / var(--tw-text-opacity));
 }
 
+.hover\:t-text-blue-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(147 197 253 / var(--tw-text-opacity));
+}
+
+.hover\:t-text-blue-200:hover {
+  --tw-text-opacity: 1;
+  color: rgb(191 219 254 / var(--tw-text-opacity));
+}
+
 @media (min-width: 640px) {
   .sm\:t-mt-8 {
     margin-top: 2rem;
