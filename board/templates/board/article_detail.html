@@ -2,6 +2,7 @@
 
 {%block content%}
 <div class="popup-background t-fixed t-bg-black t-h-full t-w-full t-opacity-20 t-hidden"></div>
+
 <div class="search-box-form form-outline t-fixed t-inset-0 t-flex t-items-center t-justify-center t-hidden">
     <div class="search-box-content bg-white border-black border-2 max-h-full flex flex-col t-p-4">
         <div class="popup-head t-mb-[30px] t-flex t-justify-between ">
@@ -28,7 +29,6 @@
 
 <div class="background t-bg-slate-100">
     <div class="t-mx-auto t-container t-max-w-screen-lg t-bg-white t-p-4">
-<p class="t-text-2xl">{{article.img_thumbnail}}</p>
         <!-- 본문 -->
         <div class="article-box">
             <div class="head sm:t-mt-8 t-mt-2">
@@ -68,12 +68,19 @@
                     <div class="content-box">
                         {{article.content|safe}}
                     </div>
-                    <div class="voter-box t-flex t-justify-center t-mb-[60px]">
-                        <button class="btn btn-primary like t-flex" name="{{article.id}}"><i
+                    <div class="voter-box t-flex t-justify-center t-my-[80px]">
+                        <button class="btn btn-outline-primary like t-flex" name="{{article.id}}"><i
                                 class="far fa-thumbs-up t-pt-[1px]"></i>
                             <p id="count-{{ article.id }}" class="t-ml-[4px]">{{ article.voter.all.count }}</p>
                         </button>
                     </div>
+                    {% if user.id == article.user_id %}
+                    <div class="article-update-box  t-mb-4 t-text-right">
+                        <a href="{% url 'board:modify' article.id %}" class="btn btn-outline-primary t-mr-1">수정</a>
+                        <a href="{% url 'board:delete' article.id %}" class=" btn btn-outline-danger"
+                           onclick="if ( confirm('정말 삭제하시겠습니까?') == false ) return false">삭제</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -148,8 +155,8 @@
                 </form>
             </div>
         </div>
-
         <!-- 댓글 끝 -->
+
         <!-- 리스트 -->
         <div class="article-list-box">
             <div class="article-list-head t-border-2 t-border-black">
@@ -238,6 +245,7 @@
             },
         });
     })
+
 
 
 

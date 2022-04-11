@@ -1,5 +1,4 @@
 {% extends "layout.html" %}
-
 {%block content%}
 
 
@@ -20,35 +19,21 @@
     {%else%}
     <div class="t-mx-auto t-container t-flex t-mt-[60px]  t-p-2">
         <div class="article-best-list t-basis-2/3 sm:t-block t-hidden t-mr-1">
-            <div class="t-flex-row t-flex t-h-full t-border-y-2 t-border-slate-200 t-flex-wrap">
+            <div class="t-flex-row t-flex t-h-full t-border-b-2 t-border-r-2 t-border-slate-300 t-flex-wrap">
                 {% for article in article_list %}
-                {% if forloop.last %}
-                <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-x-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
-                     style="background-image:url({{article.img_thumbnail}});">
-                    <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
-                        <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                        class="hover:t-text-blue-300">
-                            {{article.subject}}
-                        </a>
-                    </div>
-                </div>
-                {%else%}
                 <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-l-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
-                     style="background-image:url({{article.img_thumbnail}});">
-                    <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
-                        <a href="{% url 'board:detail' board.id article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                        class="hover:t-text-blue-300">
+                         style="background-image:url({{article.img_thumbnail}});">
+                    <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white t-border-y-2 t-border-slate-300">
+                        <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
+                           class="hover:t-text-blue-300">
                             {{article.subject}}
                         </a>
                     </div>
                 </div>
-                {%endif%}
                 {%endfor%}
             </div>
         </div>
     {%endif%}
-
-
         <div class="article-list-box t-border-2 t-border-slate-300 t-mx-auto sm:t-basis-1/3 t-bg-slate-50 t-opacity-90 t-p-1">
             {% for article in article_list %}
             {% if forloop.first %}
@@ -80,6 +65,8 @@
                 </div>
             </div>
             {%endfor%}
+
+            <!-- 페이지 -->
             <div class="paginator t-opacity-80 t-mt-[50px]">
                 <ul class="pagination justify-content-center t-mt-5 t-pb-5">
                     <!-- 이전페이지 -->
@@ -120,9 +107,9 @@
                     {% endif %}
                 </ul>
             </div>
+            <!-- 페이지 끝 -->
+
         </div>
     </div>
-
-
 </section>
 {%endblock%}

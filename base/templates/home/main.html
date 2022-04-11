@@ -1,33 +1,23 @@
 {% extends "layout.html" %}
 {% block content%}
+
+
 <section class="section-main-index sm:t-h-screen"
          style="background-image:url(https://user-images.githubusercontent.com/85653591/161883541-5978545f-9379-4f16-be32-628f02d4a296.jpg);">
     <div class="t-p-2 t-mx-auto t-container  t-mt-[60px]  ">
-        <div class="t-flex t-p-2 ">
-            <div class="article-best-list t-basis-2/3 sm:t-block t-hidden t-mr-1 ">
-                <div class="t-flex-row t-flex t-h-full t-border-y-2 t-border-slate-50 t-flex-wrap">
+        <div class="t-flex t-p-2">
+            <div class="article-best-list t-basis-2/3 sm:t-block t-hidden t-mr-1">
+                <div class="t-flex-row t-flex t-h-full t-border-b-2 t-border-r-2 t-border-slate-300 t-flex-wrap">
                     {% for article in article_list %}
-                    {% if forloop.last %}
-                    <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-x-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat t-overflow-hidden t-bg-contain	"
-                         style="background-image:url({{article.img_thumbnail}});">
-                        <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
-                            <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                            class="hover:t-text-blue-300">
-                                {{article.subject}}
-                            </a>
-                        </div>
-                    </div>
-                    {%else%}
                     <div class="t-bg-white t-opacity-90 t-basis-1/5 t-border-l-2 t-border-slate-300 t-h-1/2 t-bg-center t-bg-no-repeat	t-overflow-hidden t-bg-contain"
                          style="background-image:url({{article.img_thumbnail}});">
-                        <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white">
+                        <div class="t-w-full t-truncate t-bg-slate-500 t-p-2 t-text-white t-border-y-2 t-border-slate-300">
                             <a href="{% url 'board:detail' 2 article.id%}?page={{article_list.number}}&kw={{request.GET.kw}}"
-                            class="hover:t-text-blue-300">
+                               class="hover:t-text-blue-300">
                                 {{article.subject}}
                             </a>
                         </div>
                     </div>
-                    {%endif%}
                     {%endfor%}
                 </div>
             </div>

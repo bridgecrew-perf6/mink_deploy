@@ -8,7 +8,7 @@
         <form method="post" class="post-form">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-outline-primary">저장하기</button>
+            <button type="submit" class="save btn btn-outline-primary">저장하기</button>
             {% bootstrap_button button_type="reset" content="취소" button_class="btn-outline-primary" %}
         </form>
     </div>
@@ -19,7 +19,7 @@
     $(window).on('beforeunload', function () {
         if (checkUnload) return "이 페이지를 벗어나면 작성된 내용은 저장되지 않습니다.";
     });
-    $("#write").on("click", function () {
+    $(".save").on("click", function () {
         checkUnload = false;
         $("submit").submit();
     });

@@ -561,6 +561,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 1.25rem;
 }
 
+.t-my-\[50px\] {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.t-my-\[80px\] {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
 .t-mr-5 {
   margin-right: 1.25rem;
 }
@@ -785,6 +795,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-left-width: 2px;
 }
 
+.t-border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .t-border-slate-50 {
   --tw-border-opacity: 1;
   border-color: rgb(248 250 252 / var(--tw-border-opacity));
@@ -813,6 +827,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.t-border-slate-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(71 85 105 / var(--tw-border-opacity));
 }
 
 .t-bg-slate-50 {
@@ -868,6 +887,16 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-bg-red-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 65 85 / var(--tw-bg-opacity));
+}
+
+.t-bg-slate-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .t-bg-contain {
@@ -1031,6 +1060,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-text-yellow-700 {
   --tw-text-opacity: 1;
   color: rgb(161 98 7 / var(--tw-text-opacity));
+}
+
+.t-text-red-400 {
+  --tw-text-opacity: 1;
+  color: rgb(248 113 113 / var(--tw-text-opacity));
 }
 
 .t-opacity-90 {
