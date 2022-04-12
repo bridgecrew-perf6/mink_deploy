@@ -62,7 +62,10 @@ class Article(models.Model):
         icon_hidden = 'https://user-images.githubusercontent.com/85653591/157589936-bef76f01-c4eb-4378-8c42-f109d4169b9a.png'
 
         img = self.extract_attachments()
-        img_url = img[0]
+        if len(img) >= 1:
+            img_url = img[0]
+        else:
+            img_url = None
 
         if img_url is not None:
             if 'django-summernote' in img_url:

@@ -48,8 +48,8 @@ def article_detail(request: HttpRequest, board_id, article_id):
 
     kw = request.GET.get('kw', '')
     page = request.GET.get('page', '1')  # 페이지
+    #img_urls = article.img_thumbnail()
 
-    img_urls = article.img_thumbnail()
     if not kw:
         article_list = Article.objects.filter(board=board.id).order_by('-id')
 
@@ -64,7 +64,7 @@ def article_detail(request: HttpRequest, board_id, article_id):
                'board': board,
                'comment': comment,
                'article_list': page_obj,
-               'img_url': img_urls,
+            #   'img_url': img_urls,
                }
     return render(request, 'board/article_detail.html', context)
 
