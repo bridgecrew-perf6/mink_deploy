@@ -1,10 +1,11 @@
 {% extends "layout.html" %}
 
 {%block content%}
-<div class="popup-background t-fixed t-bg-black t-h-full t-w-full t-opacity-20 t-hidden"></div>
 
-<div class="search-box-form form-outline t-fixed t-inset-0 t-flex t-items-center t-justify-center t-hidden">
-    <div class="search-box-content bg-white border-black border-2 max-h-full flex flex-col t-p-4">
+<!-- 검색팝업 시작 -->
+
+<div class="search-box-form t-fixed t-inset-0 t-flex t-items-center t-justify-center t-invisible t-opacity-0" style="background-color:rgba(0,0,0,0.4);transition:visibility 0.3s, opacity 0.3s;">
+    <div class="search-box-content t-bg-white t-border-black t-border-2 t-max-h-full t-flex t-flex-col t-p-4 t-shadow-[10px_10px_50px_rgba(0,0,0,0.8)] t-rounded">
         <div class="popup-head t-mb-[30px] t-flex t-justify-between ">
             <span class="t-pt-2">검색</span>
             <button class="btn-popup-close"><i class="fas fa-times t-text-2xl"></i></button>
@@ -26,6 +27,12 @@
         </div>
     </div>
 </div>
+
+<!-- 검색팝업 끝 -->
+
+
+
+<!-- 본문 -->
 
 <div class="background t-bg-slate-100">
     <div class="t-mx-auto t-container t-max-w-screen-lg t-bg-white t-p-4">
@@ -222,8 +229,12 @@
             </ul>
         </div>
         <!-- 페이지 끝 -->
+    </div>
+</div>
 
-        <script type="text/javascript">
+<!-- 본문 끝 -->
+
+<script type="text/javascript">
     $(".like").click(function () { // .like 버튼을 클릭 감지
         var pk = $(this).attr('name')
         $.ajax({ // ajax로 서버와 통신
@@ -246,10 +257,23 @@
     })
 
 
+    function Popup1__close() {
+        console.log("실행됨");
+        $('.search-box-form').css({"visibility":"hidden", "opacity":"0"});
+    }
 
-
-
-        </script>
-    </div>
-</div>
+    function Popup1__show() {
+        console.log("실행됨");
+        $('.search-box-form').css({"visibility":"visible", "opacity":"1"});
+    }
+    function Popup__init(){
+    $('.btn-open-search-form-box').click(Popup1__show);
+    $('.search-box-form').click(Popup1__close);
+    $('.btn-popup-close').click(Popup1__close);
+    $('.search-box-content').click(function() {
+        return false;
+    });
+    }
+    Popup__init();
+</script>
 {% endblock%}
