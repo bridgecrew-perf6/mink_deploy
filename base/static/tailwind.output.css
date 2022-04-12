@@ -553,6 +553,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin: 0.25rem;
 }
 
+.t-m-4 {
+  margin: 1rem;
+}
+
 .t-my-\[0px\] {
   margin-top: 0px;
   margin-bottom: 0px;
@@ -660,6 +664,34 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.t-mt-6 {
+  margin-top: 1.5rem;
+}
+
+.t-mt-8 {
+  margin-top: 2rem;
+}
+
+.t-mt-\[20px\] {
+  margin-top: 20px;
+}
+
+.t-mt-\[40px\] {
+  margin-top: 40px;
+}
+
+.t-mt-\[80px\] {
+  margin-top: 80px;
+}
+
+.t-mt-\[30px\] {
+  margin-top: 30px;
+}
+
+.t-mt-\[10px\] {
+  margin-top: 10px;
 }
 
 .t-inline-block {
@@ -886,6 +918,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
+.t-border-slate-400 {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 163 184 / var(--tw-border-opacity));
+}
+
 .t-bg-slate-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
@@ -951,6 +988,34 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-bg-center {
   background-position: center;
+}
+
+.t-bg-\[center_right_1rem\] {
+  background-position: center right 1rem;
+}
+
+.t-bg-\[center_right_5rem\] {
+  background-position: center right 5rem;
+}
+
+.t-bg-\[center_right_6rem\] {
+  background-position: center right 6rem;
+}
+
+.t-bg-\[center_left_30rem\] {
+  background-position: center left 30rem;
+}
+
+.t-bg-\[center_left_10rem\] {
+  background-position: center left 10rem;
+}
+
+.t-bg-\[center_left_15rem\] {
+  background-position: center left 15rem;
+}
+
+.t-bg-\[center_left_13rem\] {
+  background-position: center left 13rem;
 }
 
 .t-bg-repeat {
@@ -1218,5 +1283,9 @@ html > body {
 
   .sm\:t-basis-1\/3 {
     flex-basis: 33.333333%;
+  }
+
+  .sm\:t-bg-none {
+    background-image: none;
   }
 }
