@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.0.23 | MIT License | https://tailwindcss.com
+! tailwindcss v3.0.24 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -517,32 +517,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   left: 0px;
 }
 
-.t-left-\[50\%\] {
-  left: 50%;
-}
-
-.t-left-\[-50\%\] {
-  left: -50%;
-}
-
-.t-top-\[50\%\] {
-  top: 50%;
-}
-
-.t-bottom-\[0\%\] {
-  bottom: 0%;
-}
-
-.t-bottom-\[50\%\] {
-  bottom: 50%;
-}
-
-.t-bottom-\[30\%\] {
-  bottom: 30%;
-}
-
-.t-bottom-\[40\%\] {
-  bottom: 40%;
+.t-z-50 {
+  z-index: 50;
 }
 
 .t-m-auto {
@@ -551,10 +527,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 
 .t-m-1 {
   margin: 0.25rem;
-}
-
-.t-m-4 {
-  margin: 1rem;
 }
 
 .t-my-\[0px\] {
@@ -585,11 +557,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .t-mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-}
-
-.t-my-\[80px\] {
-  margin-top: 80px;
-  margin-bottom: 80px;
 }
 
 .t-my-\[30px\] {
@@ -646,6 +613,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 0.5rem;
 }
 
+.t-mt-\[80px\] {
+  margin-top: 80px;
+}
+
 .t-ml-\[4px\] {
   margin-left: 4px;
 }
@@ -654,44 +625,24 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-bottom: 40px;
 }
 
-.t-mt-\[25\%\] {
-  margin-top: 25%;
-}
-
 .t-mt-\[50px\] {
   margin-top: 50px;
-}
-
-.t-mb-5 {
-  margin-bottom: 1.25rem;
-}
-
-.t-mt-6 {
-  margin-top: 1.5rem;
-}
-
-.t-mt-8 {
-  margin-top: 2rem;
-}
-
-.t-mt-\[20px\] {
-  margin-top: 20px;
-}
-
-.t-mt-\[40px\] {
-  margin-top: 40px;
-}
-
-.t-mt-\[80px\] {
-  margin-top: 80px;
 }
 
 .t-mt-\[30px\] {
   margin-top: 30px;
 }
 
-.t-mt-\[10px\] {
-  margin-top: 10px;
+.t-mr-2 {
+  margin-right: 0.5rem;
+}
+
+.t-mt-\[25\%\] {
+  margin-top: 25%;
+}
+
+.t-mb-5 {
+  margin-bottom: 1.25rem;
 }
 
 .t-inline-block {
@@ -770,46 +721,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   flex-basis: 20%;
 }
 
-.t-translate-x-2\/4 {
-  --tw-translate-x: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-x-\[-50\%\] {
-  --tw-translate-x: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[50\%\] {
-  --tw-translate-y: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[-50\%\] {
-  --tw-translate-y: -50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[75\%\] {
-  --tw-translate-y: 75%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[100\%\] {
-  --tw-translate-y: 100%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[120\%\] {
-  --tw-translate-y: 120%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.t-translate-y-\[130\%\] {
-  --tw-translate-y: 130%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .t-cursor-pointer {
   cursor: pointer;
 }
@@ -876,6 +787,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-width: 2px;
 }
 
+.t-border-4 {
+  border-width: 4px;
+}
+
 .t-border-y-2 {
   border-top-width: 2px;
   border-bottom-width: 2px;
@@ -918,11 +833,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
 }
 
-.t-border-slate-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(148 163 184 / var(--tw-border-opacity));
-}
-
 .t-bg-slate-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 250 252 / var(--tw-bg-opacity));
@@ -958,11 +868,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
 
-.t-bg-black {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
-}
-
 .t-bg-blue-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
@@ -978,10 +883,6 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
-.t-bg-inherit {
-  background-color: inherit;
-}
-
 .t-bg-contain {
   background-size: contain;
 }
@@ -990,36 +891,8 @@ Ensure the default browser behavior of the `hidden` attribute.
   background-position: center;
 }
 
-.t-bg-\[center_right_1rem\] {
-  background-position: center right 1rem;
-}
-
-.t-bg-\[center_right_5rem\] {
-  background-position: center right 5rem;
-}
-
-.t-bg-\[center_right_6rem\] {
-  background-position: center right 6rem;
-}
-
-.t-bg-\[center_left_30rem\] {
-  background-position: center left 30rem;
-}
-
-.t-bg-\[center_left_10rem\] {
-  background-position: center left 10rem;
-}
-
-.t-bg-\[center_left_15rem\] {
-  background-position: center left 15rem;
-}
-
 .t-bg-\[center_left_13rem\] {
   background-position: center left 13rem;
-}
-
-.t-bg-repeat {
-  background-repeat: repeat;
 }
 
 .t-bg-no-repeat {
@@ -1177,32 +1050,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   opacity: 0.9;
 }
 
-.t-opacity-20 {
-  opacity: 0.2;
+.t-opacity-0 {
+  opacity: 0;
 }
 
 .t-opacity-80 {
   opacity: 0.8;
 }
 
-.t-opacity-30 {
-  opacity: 0.3;
-}
-
-.t-opacity-0 {
-  opacity: 0;
-}
-
-.t-shadow-xl {
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.t-shadow-\[0_35px_60px_-15px_rgba\(0\,0\,0\,0\.3\)\] {
-  --tw-shadow: 0 35px 60px -15px rgba(0,0,0,0.3);
-  --tw-shadow-colored: 0 35px 60px -15px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+.t-opacity-100 {
+  opacity: 1;
 }
 
 .t-shadow-\[10px_10px_50px_rgba\(0\,0\,0\,0\.8\)\] {

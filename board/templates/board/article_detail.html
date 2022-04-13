@@ -4,7 +4,7 @@
 
 <!-- 검색팝업 시작 -->
 
-<div class="search-box-form t-fixed t-inset-0 t-flex t-items-center t-justify-center t-invisible t-opacity-0"
+<div class="search-box-form t-fixed t-inset-0 t-flex t-items-center t-justify-center t-z-50 t-invisible t-opacicy-0"
      style="background-color:rgba(0,0,0,0.4);transition:visibility 0.3s, opacity 0.3s;">
     <div class="search-box-content t-bg-white t-border-slate-500 t-border-2 t-max-h-full t-flex t-flex-col t-p-4 t-shadow-[10px_10px_50px_rgba(0,0,0,0.8)] t-rounded">
         <div class="popup-head t-mb-[30px] t-flex t-justify-between ">
@@ -163,14 +163,8 @@
         <!-- 댓글 끝 -->
 
         <!-- 리스트 -->
-        <div class="article-list-box t-border-2 t-border-black">
+        <div class="article-list-box">
             <div class="article-list-head ">
-                <div class="article-list-board-link">
-                    <a href="{% url 'board:category' board.id %}"
-                       class="t-text-orange-300 t-text-2xl t-font-bold hover:t-text-blue-400"><i
-                            class="fas fa-paw"></i> <span>{{board.name }}</span>
-                    </a>
-                </div>
                 <div class="search-btn-box">
                     <button class="btn-open-search-form-box t-mt-[50px]">
                         <i class="fas fa-search t-text-slate-600 t-text-xl hover:t-text-blue-400"></i>
@@ -178,7 +172,7 @@
                 </div>
             </div>
 
-            <div class="article-list-body t-border-2 t-border-black">
+            <div class="article-list-body">
                 {% if article_list %}
                 <div class="t-mx-auto t-mt-[30px]">
                     <div class="article-list-box t-border-2 t-border-slate-300 t-mx-auto t-w-full sm:t-basis-1/3 t-bg-slate-50 t-opacity-90 t-p-1">
@@ -208,17 +202,10 @@
                             </p>
                         </div>
                         <div class="writer-nickname-box">
-                            <p><i class="fa-regular fa-user"></i> {{article.writer}}</p>
+                            <p class="t-mr-2"><i class="fa-regular fa-user"></i>{{article.writer}}</p>
                         </div>
                     </div>
                 </div>
-                {% if forloop.last %}
-                <div class="t-p-2 t-text-center">
-                    <a href="/board/2/"
-                       class="t-font-bold t-text-2xl t-bg-slate-50 t-opacity-90 t-p-2 t-rounded-2xl t-border-2 t-border-slate-200">더
-                        보기</a>
-                </div>
-                {%endif%}
                 {%endfor%}
             </div>
                 </div>
